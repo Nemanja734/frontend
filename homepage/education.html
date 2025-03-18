@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@91.9,200..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="/assets/icons/admin.png">
+    <title>IT Services Tomic</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <!-- Desktop -->
+        <div class="navbar__desktop">
+            <!-- Header -->
+            <div class="navbar__desktop-header">
+                <a href="/resume.html" class="navbar__desktop-header-item">
+                    <img src="/assets/icons/js.png" alt="JavaScript">
+                    <p>resume.js</p>
+                </a>
+                <a class="navbar__desktop-header-item active">
+                    <img src="/assets/icons/html.png" alt="HTML">
+                    <p>education.html</p>
+                </a>
+                <a href="/experience.html" class="navbar__desktop-header-item">
+                    <img src="/assets/icons/css.png" alt="CSS">
+                    <p>experience.css</p>
+                </a>
+                <div class="navbar__desktop-header-filler"></div>
+            </div>
+            <!-- Sidenav -->
+            <div class="navbar__desktop-sidenav">
+                <div class="navbar__desktop-sidenav-section">
+                    <a href="/">
+                        <img src="/assets/icons/welcome.png" alt="Welcome">
+                    </a>
+                    <a href="/resume.html" class="active">
+                        <img src="/assets/icons/copy.png" alt="Copy">
+                    </a>
+                    <a href="/contact.html">
+                        <img src="/assets/icons/email.png" alt="Email">
+                    </a>
+                </div>
+                <div class="navbar__desktop-sidenav-section">
+                    <a href="https://github.com/Nemanja734" target="_">
+                        <img src="/assets/icons/github.png" alt="GitHub">
+                    </a>
+                    <a href="https://www.linkedin.com/in/nemanja-tomic-1b1342259/" target="_">
+                        <img src="/assets/icons/linkedin.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile -->
+        <div class="navbar__mobile">
+            <div class="navbar__mobile-sidebar-toggle">
+                <div class="navbar__mobile-sidebar-hamburger">
+                    <span></span>
+                </div>
+            </div>
+            <div class="navbar__mobile-sidebar">
+                <h3>Menu</h3>
+                <div class="navbar__mobile-menu">
+                    <a href="/" class="navbar__mobile-menu-item">Welcome</a>
+                    <a href="/resume.html" class="navbar__mobile-menu-item">Resume</a>
+                    <a href="/education.html" class="navbar__mobile-menu-item active">Education</a>
+                    <a href="/experience.html" class="navbar__mobile-menu-item">Experience</a>
+                    <a href="/books.html" class="navbar__mobile-menu-item">Books</a>
+                    <a href="/contact.html" class="navbar__mobile-menu-item">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Education -->
+    <div class="education__modal" id="pdfModal">
+        <span class="education__modal-close">&times;</span>
+        <div class="education__modal-content">
+            <iframe src="/assets/pdfs/Certificates.pdf" frameborder="0" allowfullscreen
+                class="education__modal-pdf"></iframe>
+        </div>
+    </div>
+
+    <section class="education__container container">
+        <div class="education__content">
+            <h1>Education & Certifications</h1>
+            <button class="btn-1 education__pdf-button">View Certifications</button>
+            <!-- Item 1 -->
+            <div class="education__item">
+                <img src="/assets/logos/DHBW.png" alt="DHBW" class="education__item-logo">
+                <h3>B.Sc. Business Informatics</h3>
+                <div class="education__item-subheader">
+                    <h5>Duale Hochschule Baden-Württemberg Stuttgart</h5>
+                    <h5>From 01/09/2021 to 31/08/2024</h5>
+                </div>
+                <p>During my time in Stuttgart, I gained extensive knowledge in software engineering and business
+                    operations. I participated in several workshops that covered both technical and team-oriented
+                    challenges, designed to enhance the core skills essential for any software project. Additionally,
+                    practical training periods allowed me to work alongside experienced IT professionals within
+                    established companies. As a result, I have developed expertise not only in software development but
+                    also in providing consultancy for various IT projects.</p>
+            </div>
+            <!-- Item 2 -->
+            <div class="education__item">
+                <img src="/assets/logos/udemy.png" alt="Udemy" class="education__item-logo">
+                <h3>Microsoft ASP.NET Core & Angular</h3>
+                <div class="education__item-subheader">
+                    <h5>Udemy</h5>
+                    <h5>2024</h5>
+                </div>
+                <p>ASP.NET Core and Angular are powerful frameworks for building modern, feature-rich web applications.
+                    They provide a secure and efficient means of communication between the front end, API, and database
+                    servers, making them ideal for handling large-scale applications. These frameworks support a wide
+                    range of functionalities, such as user account registration, real-time chat messaging, email
+                    distribution, and seamless checkout processes, all implemented with efficiency and reliability.</p>
+            </div>
+            <!-- Item 3 -->
+            <div class="education__item">
+                <img src="/assets/logos/THM.png" alt="TryHackMe" class="education__item-logo">
+                <h3>Cyber Security Analyst</h3>
+                <div class="education__item-subheader">
+                    <h5>TryHackMe</h5>
+                    <h5>2025</h5>
+                </div>
+                <p>TryHackMe is a platform designed for cybersecurity engineers and ethical hackers, where I have honed
+                    my skills in securing web applications against potential threats. I specialize in identifying and
+                    mitigating vulnerabilities such as SQL injection, brute force attacks, and network exploitation —
+                    common risks every IT project faces when launching publicly on the internet. With my expertise, I
+                    can ensure your application is thoroughly hardened, leaving no room for hackers to compromise your
+                    server or data integrity.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <!-- Left Side -->
+            <div class="footer__side">
+                <div class="footer__item footer__global">
+                    <img src="/assets/icons/global.png" alt="Global">
+                </div>
+                <div class="footer__item">
+                    <img src="/assets/icons/source-control.png" alt="GitHub">
+                    <p>main</p>
+                </div>
+                <div class="footer__item">
+                    <div class="footer__item">
+                        <img src="/assets/icons/check.png" alt="Checks">
+                        <p>3</p>
+                    </div>
+                    <div class="footer__item">
+                        <img src="/assets/icons/alert.png" alt="Warnings">
+                        <p>0</p>
+                    </div>
+                </div>
+                <div class="footer__item">
+                    <img src="/assets/icons/communication-tower.png" alt="Radio Tower">
+                    <p>5</p>
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="footer__side">
+                <div class="footer__item">
+                    <p>Ln 78, Col 22</p>
+                </div>
+                <div class="footer__item">
+                    <p>Spaces 13</p>
+                </div>
+                <div class="footer__item">
+                    <p>UTF-8</p>
+                </div>
+                <div class="footer__item">
+                    <p>Web Design</p>
+                </div>
+                <div class="footer__item footer__internet">
+                    <img src="/assets/icons/internet.png" alt="Internet">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/education.js"></script>
+</body>
+
+</html>

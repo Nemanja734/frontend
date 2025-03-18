@@ -1,0 +1,75 @@
+<div *ngIf="appointments?.data!.length > 0" class="mx-auto max-w-screen-lg">
+    <div class="md:flex gap-6 mb-4">
+        <h2 class="header-1 pb-2">{{'appointments.h1' | translate}}</h2>
+        <div class="ml-auto flex gap-6">
+            <button mat-stroked-button #statusMenuTrigger="matMenuTrigger"
+                [matMenuTriggerFor]="status">{{'appointments.status-filter' | translate}}</button>
+            <mat-menu #status class="px-4 mt-2">
+                <form class="max-w-48" (click)="stopPropagation($event)">
+                    <mat-selection-list [(ngModel)]="selectedstatus" multiple name="status">
+                        <mat-list-option *ngFor="let status of availableStatus" [value]="status">
+                            {{ ('status.' + status) | translate }}
+                        </mat-list-option>
+                    </mat-selection-list>
+                    <button mat-stroked-button (click)="handleFilterEvent()">{{'showroom.apply' | translate}}</button>
+                </form>
+            </mat-menu>
+            <mat-divider vertical></mat-divider>
+            <!-- Reset Filters Button -->
+            <div>
+                <button mat-stroked-button (click)="resetFilters()">{{'showroom.reset' | translate}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col">
+        <div class="w-full mx-auto flex flex-col gap-4">
+            @for (appointment of appointments!.data; track appointment.id) {
+            <mat-card *ngIf="appointment.id !== undefined" class="p-6 border rounded-lg shadow-md">
+                <!-- Order Informations Section -->
+                <div class="flex justify-between items-center">
+                    <div class="text-sm grid grid-cols-2 md:flex justify-between align-middle text-center w-full">
+                        <div class="mb-2">
+                            <p class="uppercase">{{'appointments.order-placed' | translate}}</p>
+                            <span class="font-semibold">{{appointment.orderDate | date}}</span>
+                        </div>
+                        <div>
+                            <p class="uppercase">{{'appointments.total' | translate}}</p>
+                            <span class="font-semibold">{{appointment.subtotal | globalCurrency}}</span>
+                        </div>
+                        <div>
+                            <p class="uppercase">{{'appointments.artist' | translate}}</p>
+                            <span class="font-semibold">{{appointment.artistFullName}}</span>
+                        </div>
+                        <div>
+                            <p class="uppercase">{{'appointments.order-number' | translate}}</p>
+                            <p class="font-semibold">#{{appointment.id}}</p>
+                            <button mat-button class="text-xs hover:underline">{{'appointments.invoice' |
+                                translate}}</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row justify-between">
+                    <div class="flex flex-col gap-2">
+                        <h3 class="font-extrabold sm:text-2xl">{{'appointments.order-status' | translate}} {{ 'status.'
+                            + (appointment.status! | appointmentStatus) | translate}}</h3>
+                        <h3>{{'appointments.name' | translate}} {{appointment.customerFullName}}</h3>
+                        <h3>{{'appointments.next-appointment' | translate}} {{appointment.appointmentDate?.[0] | date:
+                            'medium'}}</h3>
+                    </div>
+                    <div class="flex flex-col gap-2 mt-2 items-center">
+                        <button routerLink="/showroom/{{appointment.artistId}}" mat-flat-button class="mr-2 w-60">{{'appointments.view-artist-button' | translate}}</button>
+                        <button routerLink="/appointments/{{appointment.id}}" mat-flat-button class="mr-2 w-60">{{'appointments.appointment-details-button' | translate}}</button>
+                    </div>
+                </div>
+            </mat-card>
+            }
+        </div>
+        <app-paginator [totalItems]="appointments!.count" [pageSize]="appointments!.pageSize"
+            (pageChanged)="handlePageEvent($event)"></app-paginator>
+    </div>
+</div>
+
+<div *ngIf="appointments?.data?.length === 0">
+    <app-empty-state message="{{'appointments.empty-message' | translate}}" icon="auto_stories" actionText="{{'appointments.empty-action' | translate}}"
+        (action)="redirectToShowroom()"></app-empty-state>
+</div>

@@ -1,0 +1,179 @@
+@if (appointment && artist?.address && artist) {
+<div class="max-w-screen-lg mx-auto flex flex-col gap-6">
+    <div class="md:flex justify-between items-center">
+        <div class="mb-2">
+            <h1 class="text-2xl md:text-4xl md:mb-4">{{ 'appointmentDetails.title' | translate }}</h1>
+            <div class="flex flex-row gap-3">
+                <div>
+                    <p>{{ 'appointmentDetails.orderedOn' | translate }}</p>
+                    <p>{{ appointment.orderDate | date }}</p>
+                </div>
+                <mat-divider vertical></mat-divider>
+                <div>
+                    <p>{{ 'appointmentDetails.orderNumber' | translate }}</p>
+                    <p># {{ appointment.id }}</p>
+                </div>
+                <mat-divider vertical></mat-divider>
+                <div>
+                    <p>{{ 'appointmentDetails.status' | translate }}</p>
+                    <p>{{ 'status.' + (appointment.status! | appointmentStatus) | translate}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="md:pr-8 flex flex-row md:flex-col gap-2">
+            <button mat-stroked-button routerLink="/showroom/{{artist.id}}">
+                {{ 'appointmentDetails.goToArtistPage' | translate }}
+            </button>
+            <button mat-stroked-button routerLink="/appointments">
+                {{ 'appointmentDetails.yourAppointments' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <mat-card class="p-8">
+        <div class="flex justify-around md:justify-between items-start">
+            <!-- Artist Information -->
+            <div class="flex flex-col gap-4">
+                <dl>
+                    <dt class="font-bold">{{ 'appointmentDetails.customer' | translate }}</dt>
+                    <dd>{{ appointment.customerFullName }}</dd>
+                </dl>
+                <dl>
+                    <dt class="font-bold">{{ 'appointmentDetails.artist' | translate }}</dt>
+                    <dd>{{ artist.firstName }} {{ artist.lastName }}</dd>
+                    <dd>{{ 'appointmentDetails.hourlyRate' | translate }}: {{ artist.hourlyRate | globalCurrency }}</dd>
+                </dl>
+            </div>
+            <!-- Address -->
+            <dl>
+                <dt class="font-bold">{{ 'appointmentDetails.studioAddress' | translate }}</dt>
+                <dd>{{ artist.address!.line1 }}</dd>
+                <dd *ngIf="artist.address!.line2 !== ''">{{ artist.address!.line2 }}</dd>
+                <dd>{{ artist.address!.city }}, {{ artist.address!.postalCode }}</dd>
+                <dd>{{ artist.address!.country }}</dd>
+            </dl>
+            <!-- Appointment Management -->
+            <!-- Desktop Version -->
+            <div *ngIf="!isMobile">
+                <!-- Customer Section -->
+                <div *ngIf="accountService.currentUser()?.roles?.includes('Customer')" class="flex flex-col gap-2">
+                    <button mat-button routerLink="/legal/contact">{{ 'appointmentDetails.problemWithAppointment' | translate }}</button>
+                    <!-- <button mat-flat-button *ngIf="appointment.status === 2"
+                        (click)="removeAppointment(appointment.id!)">
+                        {{ 'appointmentDetails.removeAppointment' | translate }}
+                    </button> -->
+                    <button mat-flat-button *ngIf="appointment.status === 6 || appointment.status === 2"
+                        (click)="cancelAsCustomer(appointment.id!)">
+                        {{ 'appointmentDetails.cancelAppointment' | translate }}
+                    </button>
+                    <button mat-flat-button *ngIf="appointment.status === 10 && appointment.review === null"
+                        routerLink="/review/{{appointment.id}}">
+                        {{ 'appointmentDetails.leaveReview' | translate }}
+                    </button>
+                </div>
+                <!-- Artist Section -->
+                <div *ngIf="accountService.currentUser()?.roles?.includes('Artist')" class="flex flex-col gap-2">
+                    <button mat-flat-button *ngIf="appointment.status === 2"
+                        (click)="acceptAppointment(appointment.id!)">
+                        {{ 'appointmentDetails.acceptAppointment' | translate }}
+                    </button>
+                    <button mat-flat-button *ngIf="appointment.status === 2"
+                        (click)="declineAppointment(appointment.id!)">
+                        {{ 'appointmentDetails.declineAppointment' | translate }}
+                    </button>
+                    <button mat-flat-button *ngIf="appointment.status === 5" (click)="doneAppointment(appointment.id!)">
+                        {{ 'appointmentDetails.appointmentDone' | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Version -->
+        <div class="mt-2 mx-auto" *ngIf="isMobile">
+            <!-- Customer Section -->
+            <div *ngIf="accountService.currentUser()?.roles?.includes('Customer')" class="flex flex-row gap-2">
+                <button mat-button routerLink="/legal/contact">{{ 'appointmentDetails.problemWithAppointment' | translate }}</button>
+                <!-- <button mat-flat-button *ngIf="appointment.status === 2" (click)="removeAppointment(appointment.id!)">
+                    {{ 'appointmentDetails.removeAppointment' | translate }}
+                </button> -->
+                <button mat-flat-button *ngIf="appointment.status === 2 || appointment.status === 6" (click)="cancelAsCustomer(appointment.id!)">
+                    {{ 'appointmentDetails.cancelAppointment' | translate }}
+                </button>
+                <button mat-flat-button *ngIf="appointment.status === 10 && appointment.review === null"
+                    routerLink="/review/{{appointment.id}}">
+                    {{ 'appointmentDetails.leaveReview' | translate }}
+                </button>
+            </div>
+            <!-- Artist Section -->
+            <div *ngIf="accountService.currentUser()?.roles?.includes('Artist')" class="flex flex-row gap-2">
+                <button mat-flat-button *ngIf="appointment.status === 2" (click)="acceptAppointment(appointment.id!)">
+                    {{ 'appointmentDetails.acceptAppointment' | translate }}
+                </button>
+                <button mat-flat-button *ngIf="appointment.status === 2" (click)="declineAppointment(appointment.id!)">
+                    {{ 'appointmentDetails.declineAppointment' | translate }}
+                </button>
+                <button mat-flat-button *ngIf="appointment.status === 5" (click)="doneAppointment(appointment.id!)">
+                    {{ 'appointmentDetails.appointmentDone' | translate }}
+                </button>
+            </div>
+        </div>
+    </mat-card>
+    <mat-divider></mat-divider>
+    <!-- Appointment Information -->
+    <mat-card class="p-8">
+        <div class="flex flex-col sm:flex-row justify-around md:justify-between items-start gap-4">
+            <!-- Tattoo Information -->
+            <div class="md:w-1/3">
+                <dl>
+                    <dt class="font-bold pb-1">{{ 'appointmentDetails.tattooInformation' | translate }}</dt>
+                    <dd>{{ 'appointmentDetails.bodyPart' | translate }}: {{ appointment.bodyPart }}</dd>
+                    <dd>{{ 'appointmentDetails.description' | translate }}: {{ appointment.description }}</dd>
+                    <dd>{{ 'appointmentDetails.size' | translate }}: {{ appointment.size | sizeEnum }}</dd>
+                    <dd>{{ 'appointmentDetails.quality' | translate }}: {{ appointment.quality | qualityEnum }}</dd>
+                    <dd>{{ 'appointmentDetails.estimatedTime' | translate }}: {{ appointment.estimatedTime }} hours</dd>
+                    <dd>{{ 'appointmentDetails.subtotal' | translate }}: {{ appointment.subtotal | currency }}</dd>
+                </dl>
+            </div>
+            <!-- Dates, Payment Summary -->
+            <div class="flex flex-col gap-4" [ngClass]="{'w-1/3' : !isMobile}">
+                <dl>
+                    <dt class="font-bold pb-1">{{ 'appointmentDetails.dates' | translate }}</dt>
+                    @for (date of appointment.appointmentDate; track $index) {
+                    <dd>{{ date | date: 'medium' }}</dd>
+                    }
+                </dl>
+                <dl *ngIf="accountService.currentUser()?.roles?.includes('Customer')">
+                    <dt class="font-bold pb-1">{{ 'appointmentDetails.paymentSummary' | translate }}</dt>
+                    <dd>{{ appointment.paymentSummary | paymentCard }}</dd>
+                </dl>
+                <dl *ngIf="isMobile">
+                    <dt class="font-bold pb-1">{{ 'appointmentDetails.appointmentStatus' | translate }}</dt>
+                    <dd>{{ 'status.' + (appointment.status! | appointmentStatus) | translate}}</dd>
+                </dl>
+                <dl *ngIf="isMobile && appointment.actualTime !== 0">
+                    <dt class="font-bold pb-1">{{ 'appointmentDetails.actualTime' | translate }}</dt>
+                    <dd>{{appointment.actualTime}} {{'hours' | translate}}</dd>
+                </dl>
+            </div>
+            <!-- Appointment Status -->
+            <div *ngIf="!isMobile" class="flex flex-col gap-4">
+                <dl>
+                    <dt class="font-bold pb-1">{{ 'appointmentDetails.appointmentStatus' | translate }}</dt>
+                    <dd>{{ 'status.' + (appointment.status! | appointmentStatus) | translate}}</dd>
+                </dl>
+                <dl *ngIf="appointment.actualTime !== 0">
+                    <dt class="font-bold pb-1">{{ 'appointmentDetails.actualTime' | translate }}</dt>
+                    <dd>{{appointment.actualTime}} {{'hours' | translate}}</dd>
+                </dl>
+            </div>
+        </div>
+    </mat-card>
+    <mat-divider></mat-divider>
+    <div class="grid-container">
+        <div *ngFor="let pic of appointment.imageUrls">
+            <mat-card>
+                <img src="{{ pic }}" alt="{{ 'appointmentDetails.tattooPictureAlt' | translate }}">
+            </mat-card>
+        </div>
+    </div>
+</div>
+}

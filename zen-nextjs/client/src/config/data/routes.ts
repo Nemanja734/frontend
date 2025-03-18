@@ -1,0 +1,16 @@
+export const routes = {
+    home: "/",
+    showroom: "/showroom",
+    blog: "/blog",
+    blog_hygiene: "/blog/hygiene",
+    blog_tattooStyles: "/blog/tattoo-styles",
+    blog_aftercare: "/blog/aftercare",
+    artist: "/artist",
+    signin: "/sign-in",
+    signup: "/sign-up",
+    cancel: "/cancel",
+    imprint: "/imprint",
+    privacy: "/privacy",
+    terms: "/terms",
+    comingSoon: "/coming-soon",
+  };

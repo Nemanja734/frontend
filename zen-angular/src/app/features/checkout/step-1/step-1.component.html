@@ -1,0 +1,42 @@
+<div class="w-full flex flex-col gap-6 mb-2" [formGroup]="tattooForm">
+    <!-- Body Part -->
+    <div>
+        <h1 class="text-xl mb-4">{{'tattooForm.title' | translate}}</h1>
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>{{'billingInfo.fields.bodyPart' | translate}}</mat-label>
+            <input formControlName="bodyPart" type="text" placeholder="{{'tattooForm.bodyPartInput' | translate}}" matInput>
+        </mat-form-field>
+    </div>
+
+    <!-- Style Selector -->
+    <div>
+        <h1 class="text-xl mb-4">{{'tattooForm.styleHeader' | translate}}</h1>
+        <mat-radio-group formControlName="quality" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            @for (style of accountService.qualityOptions; track $index) {
+            <label class="py-2 border cursor-pointer w-full h-full hover:bg-gray-800">
+                <mat-radio-button class="w-full h-full" [value]="style|quality">
+                    <div class="flex flex-col w-full h-full">
+                        <strong>{{'style.' + style | translate}}</strong>
+                    </div>
+                </mat-radio-button>
+            </label>
+            }
+        </mat-radio-group>
+    </div>
+
+    <!-- Size Selector -->
+    <div>
+        <h1 class="text-xl mb-4">{{'tattooForm.sizeHeader' | translate}}</h1>
+        <mat-radio-group formControlName="size" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            @for (size of accountService.sizeOptions; track $index) {
+            <label class="py-2 border cursor-pointer w-full h-full hover:bg-gray-800">
+                <mat-radio-button class="w-full h-full" [value]="size|size">
+                    <div class="flex flex-col w-full h-full">
+                        <strong>{{'size.' + size | translate}}</strong>
+                    </div>
+                </mat-radio-button>
+            </label>
+            }
+        </mat-radio-group>
+    </div>
+</div>

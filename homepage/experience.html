@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@91.9,200..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="/assets/icons/admin.png">
+    <title>IT Services Tomic</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <!-- Desktop -->
+        <div class="navbar__desktop">
+            <!-- Header -->
+            <div class="navbar__desktop-header">
+                <a href="/resume.html" class="navbar__desktop-header-item">
+                    <img src="/assets/icons/js.png" alt="JavaScript">
+                    <p>resume.js</p>
+                </a>
+                <a href="/education.html" class="navbar__desktop-header-item">
+                    <img src="/assets/icons/html.png" alt="HTML">
+                    <p>education.html</p>
+                </a>
+                <a class="navbar__desktop-header-item active">
+                    <img src="/assets/icons/css.png" alt="CSS">
+                    <p>experience.css</p>
+                </a>
+                <div class="navbar__desktop-header-filler"></div>
+            </div>
+            <!-- Sidenav -->
+            <div class="navbar__desktop-sidenav">
+                <div class="navbar__desktop-sidenav-section">
+                    <a href="/">
+                        <img src="/assets/icons/welcome.png" alt="Welcome">
+                    </a>
+                    <a href="/resume.html" class="active">
+                        <img src="/assets/icons/copy.png" alt="Copy">
+                    </a>
+                    <a href="/contact.html">
+                        <img src="/assets/icons/email.png" alt="Email">
+                    </a>
+                </div>
+                <div class="navbar__desktop-sidenav-section">
+                    <a href="https://github.com/Nemanja734" target="_">
+                        <img src="/assets/icons/github.png" alt="GitHub">
+                    </a>
+                    <a href="https://www.linkedin.com/in/nemanja-tomic-1b1342259/" target="_">
+                        <img src="/assets/icons/linkedin.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile -->
+        <div class="navbar__mobile">
+            <div class="navbar__mobile-sidebar-toggle">
+                <div class="navbar__mobile-sidebar-hamburger">
+                    <span></span>
+                </div>
+            </div>
+            <div class="navbar__mobile-sidebar">
+                <h3>Menu</h3>
+                <div class="navbar__mobile-menu">
+                    <a href="/" class="navbar__mobile-menu-item">Welcome</a>
+                    <a href="/resume.html" class="navbar__mobile-menu-item">Resume</a>
+                    <a href="/education.html" class="navbar__mobile-menu-item">Education</a>
+                    <a href="/experience.html" class="navbar__mobile-menu-item active">Experience</a>
+                    <a href="/books.html" class="navbar__mobile-menu-item">Books</a>
+                    <a href="/contact.html" class="navbar__mobile-menu-item">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Education -->
+    <div class="education__modal" id="modalTestgilde">
+        <span class="education__modal-close">&times;</span>
+        <div class="education__modal-content">
+            <iframe src="/assets/pdfs/TestGildeGmbH.pdf" frameborder="0" allowfullscreen
+                class="education__modal-pdf"></iframe>
+        </div>
+    </div>
+
+    <section class="experience container-s" id="experience">
+        <h1>Experience</h1>
+        <h2>Existing Projects</h2>
+        <!-- Existing Projects -->
+        <div class="experience__projects">
+            <!-- Project 1 -->
+            <div class="experience__projects-item">
+                <h3>Zen Tattoo Marketplace</h3>
+                <ul class="experience__projects-item-list">
+                    <li>Self-hosted solution</li>
+                    <li>Account management with registration, login and email verification</li>
+                    <li>Password reset with identity confirmation via email</li>
+                    <li>Real-time messanging feature powered by SignalR for logged-in users</li>
+                    <li>Checkout with Stripe for payment processing</li>
+                    <li>Database queries through the API</li>
+                </ul>
+                <div class="experience__projects-item-button">
+                    <a href="https://zen-tattoo.de" target="_"class="btn-1">
+                        Explore Project
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="experience__projects-item">
+                <h3>Tutor Website</h3>
+                <ul class="experience__projects-item-list">
+                    <li>Engaging landing page</li>
+                    <li>Custom-designed buttons</li>
+                    <li>Smooth CSS animations and transitions</li>
+                    <li>Advanced layouts using CSS Grid and Flexbox</li>
+                    <li>Responsive, mobile-friendly design</li>
+                </ul>
+                <div class="experience__projects-item-button">
+                    <a href="/tutor/index.html" target="_" class="btn-1">
+                        Explore Project
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="experience__projects-item">
+                <h3>Leno App</h3>
+                <ul class="experience__projects-item-list">
+                    <li>Modern landing page design</li>
+                    <li>Custom interactive buttons</li>
+                    <li>CSS-powered animations and transitions</li>
+                    <li>Complex layouts achieved with CSS Grid and Flexbox</li>
+                    <li>Fully responsive across devices</li>
+                </ul>
+                <div class="experience__projects-item-button">
+                    <a href="/leno/index.html" target="_" class="btn-1">
+                        Explore Project
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <h2>References</h2>
+        <!-- Testimonials -->
+        <div class="experience__projects">
+            <!-- Testimonial 1 -->
+            <div class="experience__projects-item">
+                <h3>TestGilde GmbH</h3>
+                <ul class="experience__projects-item-list">
+                    <li>Comprehensive test management</li>
+                    <li>Expert customer consultancy</li>
+                    <li>End-to-end quality assurance services</li>
+                </ul>
+                <div class="experience__projects-item-button">
+                    <button class="btn-1" id="pdfTestgilde">Read Testimonial</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <!-- Left Side -->
+            <div class="footer__side">
+                <div class="footer__item footer__global">
+                    <img src="/assets/icons/global.png" alt="Global">
+                </div>
+                <div class="footer__item">
+                    <img src="/assets/icons/source-control.png" alt="GitHub">
+                    <p>main</p>
+                </div>
+                <div class="footer__item">
+                    <div class="footer__item">
+                        <img src="/assets/icons/check.png" alt="Checks">
+                        <p>3</p>
+                    </div>
+                    <div class="footer__item">
+                        <img src="/assets/icons/alert.png" alt="Warnings">
+                        <p>0</p>
+                    </div>
+                </div>
+                <div class="footer__item">
+                    <img src="/assets/icons/communication-tower.png" alt="Radio Tower">
+                    <p>5</p>
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="footer__side">
+                <div class="footer__item">
+                    <p>Ln 78, Col 22</p>
+                </div>
+                <div class="footer__item">
+                    <p>Spaces 13</p>
+                </div>
+                <div class="footer__item">
+                    <p>UTF-8</p>
+                </div>
+                <div class="footer__item">
+                    <p>Web Design</p>
+                </div>
+                <div class="footer__item footer__internet">
+                    <img src="/assets/icons/internet.png" alt="Internet">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/experience.js"></script>
+</body>
+
+</html>

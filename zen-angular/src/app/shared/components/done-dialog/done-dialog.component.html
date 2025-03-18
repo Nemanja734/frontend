@@ -1,0 +1,28 @@
+<div class="bg-primary-1">
+    <h3 class="text-3xl text-center pt-6 mb-3">{{ 'appointmentDoneForm.title' | translate }}</h3>
+    <mat-divider></mat-divider>
+    <form [formGroup]="doneForm" class="p-4">
+        <div class="mb-2">
+            <p class="my-2">{{ 'appointmentDoneForm.warning' | translate }}</p>
+            <mat-label>{{ 'appointmentDoneForm.confirmationQuestion' | translate }}</mat-label>
+            <mat-radio-group formControlName="done">
+                <mat-radio-button [value]="true">{{ 'appointmentDoneForm.yes' | translate }}</mat-radio-button>
+                <mat-radio-button [value]="false">{{ 'appointmentDoneForm.no' | translate }}</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <mat-form-field class="w-full">
+            <mat-label>{{ 'appointmentDoneForm.timeQuestion' | translate }}</mat-label>
+            <mat-select formControlName="timeToday">
+                <mat-option *ngFor="let index of getHourRange()" [value]="index">
+                    {{ index }} {{ 'appointmentDoneForm.hours' | translate }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="flex justify-end gap-2">
+            <button mat-raised-button color="warn" (click)="onCancel()">{{ 'appointmentDoneForm.cancel' | translate }}</button>
+            <button mat-flat-button type="submit" (click)="onConfirm()" [disabled]="doneForm.invalid">
+                {{ 'appointmentDoneForm.confirm' | translate }}
+            </button>
+        </div>
+    </form>
+</div>

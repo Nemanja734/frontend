@@ -1,0 +1,48 @@
+<form *ngIf="appointment" class="max-w-screen-sm mx-auto flex flex-col gap-6" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+    <div>
+        <h1 class="text-4xl mb-4">{{ 'review.title' | translate }}</h1>
+        <div class="flex gap-2">
+            <p>{{ 'review.orderedOn' | translate }} {{appointment.orderDate | date}}</p>
+            <mat-divider vertical></mat-divider>
+            <p>{{ 'review.orderNumber' | translate }} {{appointment.id}}</p>
+            <mat-divider vertical></mat-divider>
+            <p>{{appointment.status! | appointmentStatus}}</p>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+        <h1 class="text-xl font-bold">{{ 'review.overallRating' | translate }}</h1>
+        <div class="flex gap-1">
+            <span
+                *ngFor="let star of stars; let i = index"
+                class="star cursor-pointer"
+                [class.filled]="i < rating || i < hoverRatingValue"
+                (click)="setRating(i + 1)"
+                (mouseover)="hoverRating(i + 1)"
+                (mouseleave)="hoverRating(0)">
+                *
+            </span>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+        <h1 class="text-xl font-bold mb-2">{{ 'review.headline.label' | translate }}</h1>
+        <mat-form-field appearance="outline" hideRequiredMarker="true" class="w-full">
+            <input matInput formControlName="headline" [placeholder]="'review.headline.placeholder' | translate">
+        </mat-form-field>        
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+        <h1 class="text-xl font-bold mb-2">{{ 'review.writtenReview.label' | translate }}</h1>
+        <mat-form-field appearance="outline" hideRequiredMarker="true" class="w-full">
+            <textarea matInput formControlName="reviewText" [placeholder]="'review.writtenReview.placeholder' | translate" rows="5"></textarea>
+        </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+        <p class="text-sm">{{ 'review.notification' | translate }}</p>
+        <div class="flex justify-end mt-2">
+            <button mat-flat-button type="submit" [disabled]="reviewForm.invalid">{{ 'review.submit' | translate }}</button>
+        </div>
+    </div>
+</form>

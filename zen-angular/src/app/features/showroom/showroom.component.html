@@ -1,0 +1,140 @@
+<div class="flex flex-col gap-6">
+    <div class="flex flex-col lg:flex-row gap-2">
+        <div>
+            <h1 class="header-1">Showroom</h1>
+        </div>
+        <!-- Filters -->
+        <div class="flex gap-2 md:gap-3 lg:ml-auto flex-wrap">
+            <!-- Sort -->
+            <div>
+                <button (click)="toggleDropdown('sort')" class="button-2">
+                    <span class="filter__button">
+                        {{'showroom.sort' | translate}} <mat-icon class="filter__ddicon">arrow_drop_down</mat-icon>
+                    </span>
+                </button>
+                <div class="filter__item">
+                    <div class="filter__dropdown" id="sort">
+                        <button (click)="setSort('priceAsc')" class="filter__dropdown-button">{{'showroom.price-asc' | translate}}</button>
+                        <button (click)="setSort('priceDesc')" class="filter__dropdown-button">{{'showroom.price-desc' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Price Filter -->
+            <div>
+                <button (click)="toggleDropdown('price')" class="button-2">
+                    <span class="filter__button">
+                        {{'showroom.price' | translate}} <mat-icon class="filter__ddicon">arrow_drop_down</mat-icon>
+                    </span>
+                </button>
+                <div class="filter__item">
+                    <div class="filter__dropdown"  id="price">
+                        <div class="price__input">
+                            <div class="price__field">
+                                <span>Min</span>
+                                <input type="number" class="price__input-min" value="250">
+                            </div>
+                            <div class="price__separator">-</div>
+                            <div class="price__field">
+                                <span>Max</span>
+                                <input type="number" class="price__input-max" value="300">
+                            </div>
+                        </div>
+                        <div class="price__slider">
+                            <div class="price__slider-progress"></div>
+                        </div>
+                        <div class="price__range-input">
+                            <input type="range" class="price__range-min" min="0" max="400" value="250">
+                            <input type="range" class="price__range-max" min="0" max="400" value="300">
+                        </div>
+    
+                        <!-- <form class="max-w-48" (click)="stopPropagation($event)">
+                            <mat-form-field class="w-full" appearance="fill">
+                                <mat-label>{{'showroom.min-price' | translate}} €</mat-label>
+                                <input matInput name="minPrice" type="text" [(ngModel)]="shopParams.minPrice">
+                            </mat-form-field>
+                            <mat-form-field class="w-full" appearance="fill">
+                                <mat-label>{{'showroom.max-price' | translate}} €</mat-label>
+                                <input matInput name="maxPrice" type="text" [(ngModel)]="shopParams.maxPrice">
+                            </mat-form-field>
+                            <div class="flex justify-end items-end">
+                                <button mat-flat-button (click)="handleFilterEvent()">{{'showroom.apply' | translate}}</button>
+                            </div>
+                        </form> -->
+                    </div>
+                </div>
+            </div>
+            <!-- Style Filter -->
+            <div>
+                <button #styleMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="style" class="button-2">{{'showroom.style' | translate}}</button>
+                <mat-menu #style class="px-4 mt-2">
+                    <form (click)="stopPropagation($event)">
+                        <mat-selection-list [(ngModel)]="shopParams.styles" multiple name="style"
+                            class="max-h-64 overflow-auto">
+                            <mat-list-option *ngFor="let style of availableStyles" [value]="style">
+                                {{ ('style.' + style) | translate }}
+                            </mat-list-option>
+                        </mat-selection-list>
+                        <div class="flex justify-end items-end">
+                            <button mat-flat-button (click)="handleFilterEvent()">{{'showroom.apply' | translate}}</button>
+                        </div>
+                    </form>
+                </mat-menu>
+            </div>
+            <!-- Location Filter -->
+            <div>
+                <button #locationMenuTrigger="matMenuTrigger"
+                    [matMenuTriggerFor]="location" class="button-2">{{'showroom.location' | translate}}</button>
+                <mat-menu #location class="px-4 mt-2">
+                    <form (click)="stopPropagation($event)">
+                        <mat-form-field appearance="fill">
+                            <mat-label>{{'showroom.postalCode' | translate}}</mat-label>
+                            <input matInput type="text" [(ngModel)]="shopParams.postalCode" name="postalCode">
+                        </mat-form-field>
+
+                        <!-- Radius Slider -->
+                        <!-- <div class="w-full flex flex-col">
+                            <div class="flex justify-between">
+                                <mat-label>Radius (in km):</mat-label>
+                                <mat-label>{{ slider.value }}</mat-label>
+                            </div> -->
+                            <!-- <mat-slider [min]="min" [max]="max" step="1" thumbLabel class="w-full"> -->
+                                <!-- <input matSliderThumb value="radius" [(ngModel)]="shopParams.radius" #slider
+                                    name="radius"> -->
+                            <!-- </mat-slider> -->
+                        <!-- </div> -->
+                        <div class="flex justify-end items-end">
+                            <button mat-flat-button (click)="handleFilterEvent()">{{'showroom.apply' | translate}}</button>
+                        </div>
+                    </form>
+                </mat-menu>
+            </div>
+            <div class="border-r"></div>
+            <!-- Reset Filters Button -->
+            <div>
+                <button class="button-2" (click)="resetFilters()">{{'showroom.reset' | translate}}</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div *ngIf="!artists" class="flex flex-col align-middle items-center mt-16">
+        <app-progress-spinner></app-progress-spinner>
+        <p class="text-xl mt-4">Loading Artists...</p>
+    </div> -->
+
+    <div *ngIf="artists && artists.count > 0">
+        <div class="grid-container">
+            @for (artist of artists.data; track artist.id) {
+            <app-artist-item [artist]="artist"></app-artist-item>
+            }
+        </div>
+
+        <!-- Paginator -->
+        <app-paginator [totalItems]="artists.count" [pageSize]="artists.pageSize"
+            (pageChanged)="handlePageEvent($event)"></app-paginator>
+    </div>
+</div>
+
+<div *ngIf="artists?.count === 0">
+    <app-empty-state message="{{'showroom.no-match' | translate}}" icon="filter_alt_off" actionText="{{'showroom.reset' | translate}}"
+        (action)="resetFilters()"></app-empty-state>
+</div>

@@ -1,0 +1,6 @@
+<div class="h-screen p-4 overflow-y-scroll bg-gray-800 rounded-lg shadow-lg text-white">
+    <div *ngFor="let msg of chatMessages; let i = index" class="mb-2 p-2 rounded">
+        <strong>{{msg.senderEmail}}: </strong>{{msg.message}}
+    </div>
+    <div #messagesEnd></div>
+</div>

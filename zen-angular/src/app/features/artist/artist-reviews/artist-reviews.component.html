@@ -1,0 +1,28 @@
+<div *ngIf="reviews !== undefined && reviews.count !== 0" class="max-w-screen-sm mx-auto">
+    <h1 class="mx-auto text-4xl text-center uppercase mb-4">{{ 'reviews.title' | translate }}</h1>
+    @for (review of reviews.data; track $index) {
+        <div class="mb-12 bg-5 rounded-lg p-4">
+            <div class="flex flex-col gap-2">
+                <h1 class="text-2xl font-extrabold">{{ 'reviews.from' | translate }} {{review.firstName}}</h1>
+                <div class="flex gap-6">
+                    <span
+                        *ngFor="let star of stars; let i = index"
+                        class="star text-4xl"
+                        [class.filled]="i < review.stars">
+                        *
+                    </span>
+                    <h1 class="text-2xl font-extrabold break-words overflow-hidden text-ellipsis">{{review.headline}}</h1>
+                </div>
+                <p class="text-secondary-10">{{ 'reviews.reviewedOn' | translate }} {{review.timeStamp | date: 'longDate'}}</p>
+                <p class="break-words overflow-hidden text-ellipsis">{{review.reviewText}}</p>
+            </div>
+        </div>
+    }
+</div>
+<app-empty-state 
+    *ngIf="reviews?.count === 0"
+    icon="rate_review" 
+    message="{{'reviews.empty-state' | translate}}" 
+    actionText="{{'reviews.back-text' | translate}}"
+    (action)="redirectToArtist()">
+</app-empty-state>

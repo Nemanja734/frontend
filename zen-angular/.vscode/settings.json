@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/ad6ef1c8-1c54-4a19-97a9-2f2d52ddfad6/resourceGroups/zen-2024/providers/Microsoft.Web/sites/online-tattoo",
+    "appService.deploySubpath": "API/bin/Publish"
+}

@@ -1,0 +1,10 @@
+.answer {
+    margin-left: 72px;
+    max-height: 0;
+    overflow: hidden;
+    // transition: max-height 0.3s;
+}
+
+.answer.open {
+    max-height: 1100px;
+}

@@ -1,0 +1,34 @@
+.loading-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.dots::after {
+    content: " ";
+    display: inline-block;
+    animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0% {
+        content: " ";
+    }
+
+    25% {
+        content: " .";
+    }
+
+    50% {
+        content: " . .";
+    }
+
+    75% {
+        content: " . . .";
+    }
+
+    100% {
+        content: " ";
+    }
+}

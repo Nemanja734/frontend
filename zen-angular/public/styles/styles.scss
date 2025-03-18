@@ -1,0 +1,82 @@
+@use '@angular/material' as mat;
+@use './m3-theme.scss' as m3;
+
+@include mat.core();
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('./basic-css.scss');
+@import url('./colors.scss');
+@import url('./material-components.scss');
+@import url('./custom-components.scss');
+@import url('./mobile.scss');
+@import url('./font-size.scss');
+@import url('./index.scss');
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('../fonts/TiltNeon-Regular-VariableFont_XROT\,YROT.ttf');
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  @include mat.all-component-themes(m3.$dark-theme);
+  --primary: #003d99;
+
+  --bg-40: #383842;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'CustomFont', sans-serif !important;
+  line-height: 1.8;
+}
+
+body {
+  margin: 0;
+  // font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #080808;
+  color: #fff;
+}
+
+input {
+  background-color: #383842;
+}
+
+// Applying custom font to various material components
+:root {
+  --mat-app-font-family: 'CustomFont', sans-serif;
+  --mat-option-label-text-font: var(--mat-app-font-family);
+  --mat-optgroup-label-text-font: var(--mat-app-font-family);
+  --mdc-plain-tooltip-supporting-text-font: var(--mat-app-font-family);
+  --mat-form-field-container-text-font: var(--mat-app-font-family);
+  --mat-form-field-subscript-text-font: var(--mat-app-font-family);
+  --mat-select-trigger-text-font: var(--mat-app-font-family);
+  --mat-menu-item-label-text-font: var(--mat-app-font-family);
+  --mat-radio-label-text-font: var(--mat-app-font-family);
+  --mat-checkbox-label-text-font: var(--mat-app-font-family);
+  --mat-button-toggle-label-text-font: var(--mat-app-font-family);
+  --mat-datepicker-calendar-text-font: var(--mat-app-font-family);
+  --mat-expansion-header-text-font: var(--mat-app-font-family);
+  --mat-expansion-container-text-font: var(--mat-app-font-family);
+  --mat-list-item-text-font: var(--mat-app-font-family);
+  --mat-table-row-item-label-text-font: var(--mat-app-font-family);
+  --mat-paginator-container-text-font: var(--mat-app-font-family);
+  --mat-toolbar-title-text-font: var(--mat-app-font-family);
+  --mat-tree-node-text-font: var(--mat-app-font-family);
+  --mdc-outlined-text-field-label-text-font: var(--mat-app-font-family);
+  --mdc-dialog-subhead-font: var(--mat-app-font-family);
+  --mdc-dialog-supporting-text-font: var(--mat-app-font-family);
+  --mdc-chip-label-text-font: var(--mat-app-font-family);
+  --mat-switch-label-text-font: var(--mat-app-font-family);
+  --mdc-slider-label-label-text-font: var(--mat-app-font-family);
+  --mat-stepper-container-text-font: var(--mat-app-font-family);
+}

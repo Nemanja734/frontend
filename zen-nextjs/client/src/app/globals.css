@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+:root {
+  /* SPACING */
+  --spacing-vert: 50px;
+  --spacing-hor: 12px;
+
+  /* COLORS */
+  --primary: #105dd1;
+  --primary-tint: #d5e2fd;
+  --alarm: #cc3333;
+  --foreground: #111111;
+  --tint: #d7dbe2;
+  --tone: #8d9096;
+  --background: #f0f2ff;
+  --tint-transparent: hsla(212, 12%, 87%, 0.6);
+  --tone-transparent: hsla(212, 12%, 57%, 0.8);
+
+  /* TYPOGRAPHY */
+  --tracking-1: -0.025rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    /* SPACING */
+    --spacing-hor: 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    /* SPACING */
+    --spacing-hor: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    /* SPACING */
+    --spacing-vert: 70px;
+    --spacing-hor: 50px;
+  }
+}
+
+@theme inline {
+  /* COLORS */
+  --color-primary: var(--primary);
+  --color-primary-tint: var(--primary-tint);
+  --color-alarm: var(--alarm);
+  --color-foreground: var(--foreground);
+  --color-tint: var(--tint);
+  --color-tone: var(--tone);
+  --color-background: var(--background);
+  --color-tint-transparent: var(--tint-transparent);
+  --color-tone-transparent: var(--tone-transparent);
+
+  /* TYPOGRAPHY */
+  --tracking-1: var(--tracking-1);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Reusable classes */
+.container {
+  padding: var(--spacing-vert) var(--spacing-hor);
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+.heading-primary-mb {
+  @apply mb-6 md:mb-8;
+}
+
+.heading-primary-mt {
+  @apply mt-6 md:mt-8;
+}
+
+.link {
+  @apply underline underline-offset-2;
+}
+
+.ellipsis-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Navigation */
+.gap-header {
+  @apply md:gap-4 xl:gap-8;
+}
+
+/* Dropdown menus */
+.dd {
+  @apply bg-primary-tint rounded-xl border-1 border-tint shadow-lg;
+  background-color: var(--primary-tint);
+  border-radius: 8px;
+  border: 1px solid var(--tint);
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+}
+
+.dd-item {
+  padding: 10px 20px;
+  display: block;
+}
+
+.p-filter {
+  @apply p-4;
+}
+
+/* Swiper */
+.swiper-pagination-bullet {
+  background: var(--tint-transparent) !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--primary) !important;
+}
+

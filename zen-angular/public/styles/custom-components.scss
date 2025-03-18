@@ -1,0 +1,115 @@
+// Ratings for reviews
+.star {
+    color: lightgray;
+    transition: color 0.2s;
+    font-size: 4rem;
+}
+
+.star.filled,
+.star:hover {
+  color: gold;
+}
+
+
+// Drag and Drop Files
+.drag-drop-area {
+  border: 2px dashed #9e9e9e;
+  border-radius: 4px;
+  padding: 16px;
+  text-align: center;
+  transition: border-color 0.3s;
+  pointer-events: auto;
+}
+
+.drag-drop-area.dragging {
+  border-color: #3f51b5;
+}
+
+.file-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.drag-drop-text {
+  font-size: 0.9rem;
+  color: #9e9e9e;
+  margin-top: 8px;
+}
+
+
+// Artist Item Component
+.artist-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+  height: 100%;
+  max-width: 372px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.artist-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.artist-picture {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  max-height: 300px;
+}
+
+.styles-container {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.style-tag {
+  background-color: #333;
+  color: #fff;
+  border-radius: 12px;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.slider-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.nav-button.left {
+  left: 10px;
+}
+
+.nav-button.right {
+  right: 10px;
+}
+
+.nav-button mat-icon {
+  font-size: 24px;
+}

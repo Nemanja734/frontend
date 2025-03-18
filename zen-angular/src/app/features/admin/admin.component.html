@@ -1,0 +1,139 @@
+<div>
+    <button mat-flat-button routerLink="/admin/verify-artists">Verify Artists</button>
+    <!-- Users Section -->
+    <div *ngIf="users !== undefined">
+        <h2 class="font-semibold text-2xl mb-2 relative">Users</h2>
+
+        <!-- User Search -->
+        <div class="mb-4 flex">
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Search by Email</mat-label>
+                <input matInput type="text" [(ngModel)]="userParams.email" placeholder="Enter email address">
+            </mat-form-field>
+            <button mat-stroked-button (click)="getUsers()">Search</button>
+        </div>
+
+        <mat-table [dataSource]="users!.data" class="w-full">
+            <!-- First Name Column -->
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+                <mat-cell *matCellDef="let user"> {{user.firstName}} </mat-cell>
+            </ng-container>
+
+            <!-- Last Name Column -->
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+                <mat-cell *matCellDef="let user"> {{ user.lastName }} </mat-cell>
+            </ng-container>
+
+            <!-- Email Column -->
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                <mat-cell *matCellDef="let user"> {{ user.email }} </mat-cell>
+            </ng-container>
+
+            <!-- City Column -->
+            <ng-container matColumnDef="city">
+                <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+                <mat-cell *matCellDef="let user"> {{ user.address?.city }} </mat-cell>
+            </ng-container>
+
+            <!-- Is Deactivated Column -->
+            <ng-container matColumnDef="isDeactivated">
+                <mat-header-cell *matHeaderCellDef> Deactivated </mat-header-cell>
+                <mat-cell *matCellDef="let user"> {{ user.isDeactivated ? 'Yes' : 'No' }} </mat-cell>
+            </ng-container>
+
+            <!-- Deactivate Column -->
+            <ng-container matColumnDef="deactivate">
+                <mat-header-cell *matHeaderCellDef> Ban User </mat-header-cell>
+                <mat-cell *matCellDef="let user">
+                    <button mat-icon-button color="warn" (click)="deactivateUser(user.email)"
+                        [disabled]="user.isDeactivated" matTooltip="Deactivate User">
+                        <mat-icon>block</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row
+                *matHeaderRowDef="['firstName', 'lastName', 'email', 'city', 'isDeactivated', 'deactivate']"></mat-header-row>
+            <mat-row
+                *matRowDef="let row; columns: ['firstName', 'lastName', 'email', 'city', 'isDeactivated', 'deactivate']"></mat-row>
+        </mat-table>
+        <app-paginator [totalItems]="users!.count" [pageSize]="users!.pageSize"
+            (pageChanged)="handleUserPageEvent($event)"></app-paginator>
+    </div>
+
+    <!-- Appointments Section -->
+    <div *ngIf="appointments !== undefined">
+        <h2 class="text-xl font-semibold mt-8 mb-4">Appointments</h2>
+
+        <!-- Appointment Search -->
+        <div class="mb-4 flex">
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Search by Email</mat-label>
+                <input matInput type="text" [(ngModel)]="appointmentParams.email" placeholder="Enter email address">
+            </mat-form-field>
+            <button mat-stroked-button (click)="getAppointments()">Search</button>
+        </div>
+
+        <mat-table [dataSource]="appointments.data" class="mat-elevation-z8 w-full">
+            <!-- Artist Email Column -->
+            <ng-container matColumnDef="artistEmail">
+                <mat-header-cell *matHeaderCellDef> Artist Email </mat-header-cell>
+                <mat-cell *matCellDef="let appointment"> {{ appointment.artistEmail }} </mat-cell>
+            </ng-container>
+
+            <!-- Customer Email Column -->
+            <ng-container matColumnDef="customerEmail">
+                <mat-header-cell *matHeaderCellDef> Customer Email </mat-header-cell>
+                <mat-cell *matCellDef="let appointment"> {{ appointment.customerEmail }} </mat-cell>
+            </ng-container>
+
+            <!-- City Column -->
+            <ng-container matColumnDef="city">
+                <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+                <mat-cell *matCellDef="let appointment"> {{ appointment.city }} </mat-cell>
+            </ng-container>
+
+            <!-- Appointment Date Column -->
+            <ng-container matColumnDef="appointmentCreationDate">
+                <mat-header-cell *matHeaderCellDef> Appointment Creation Date </mat-header-cell>
+                <mat-cell *matCellDef="let appointment"> {{ appointment.orderDate | date }} </mat-cell>
+            </ng-container>
+
+            <!-- Subtotal Column -->
+            <ng-container matColumnDef="subtotal">
+                <mat-header-cell *matHeaderCellDef> Subtotal </mat-header-cell>
+                <mat-cell *matCellDef="let appointment"> {{ appointment.subtotal | currency }} </mat-cell>
+            </ng-container>
+
+            <!-- Appointment Details Column -->
+            <ng-container matColumnDef="details">
+                <mat-header-cell *matHeaderCellDef> Appointment Details </mat-header-cell>
+                <mat-cell *matCellDef="let appointment">
+                    <button mat-icon-button routerLink="/appointments/{{appointment.id}}">
+                        <mat-icon>info</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Refund Column -->
+            <ng-container matColumnDef="refund">
+                <mat-header-cell *matHeaderCellDef> Refund Appointment </mat-header-cell>
+                <mat-cell *matCellDef="let appointment">
+                    <button mat-icon-button (click)="refundAppointment(appointment.id)">
+                        <mat-icon>monetization_on</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row
+                *matHeaderRowDef="['artistEmail', 'customerEmail', 'city', 'appointmentCreationDate', 'subtotal', 'details', 'refund']"></mat-header-row>
+            <mat-row
+                *matRowDef="let row; columns: ['artistEmail', 'customerEmail', 'city', 'appointmentCreationDate', 'subtotal', 'details', 'refund']"></mat-row>
+        </mat-table>
+        <app-paginator [totalItems]="appointments!.count" [pageSize]="appointments!.pageSize"
+            (pageChanged)="handleUserPageEvent($event)"></app-paginator>
+    </div>
+</div>

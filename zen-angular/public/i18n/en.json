@@ -1,0 +1,614 @@
+{
+    "hours": "hours",
+
+    "nav": {
+        "home": "Home",
+        "showroom": "Showroom",
+        "faq": "FAQ",
+        "register": "Register",
+        "login": "Login",
+        "profile": "Profile",
+        "calendar": "Calendar",
+        "appointments": "Appointments",
+        "financials": "Financials",
+        "messenger": "Messenger",
+        "logout": "Logout"
+    },
+    "home": {
+        "howItWorksTitle": "How It Works",
+        "bestThingTitle": "And The Best Thing Is",
+        "bestThingSubtitle": "Quality Comes First",
+        "bestThingText": "Our artists are handpicked and have multiple years of experience. We are carefully verifying their portfolios and credibility, ensuring the highest quality of tattoos possible. Quality is all that counts when it comes to tattoos.",
+        "offerTitle": "Our Key Features",
+        "offerStep1": "1. Browse professional artists in the Showroom.",
+        "offerStep2": "2. Explore their portfolios and choose your favorite artist.",
+        "offerStep3": "3. Select the size and style of your tattoo.",
+        "offerStep4": "4. Get an estimated time and price for your tattoo. Note: The minimum time for a tattoo is 3 hours.",
+        "offerStep5": "5. Schedule a date for your appointment.",
+        "offerStep6": "6. Pay the estimated price calculated by our system.",
+        "offerStep7": "7. Chat with the artist to finalize the details of your tattoo. The address will be provided once the artist accepts the appointment.",
+        "offerStep8": "8. Visit the artist's location on the day of the appointment.",
+        "offerStep9": "9. After the appointment, the artist will log the actual time taken to complete your tattoo.",
+        "offerStep10": "10. Receive a refund for every full hour less than the estimated time.",
+        "offerReview": "Don't forget to leave a review for your artist! Your feedback helps them grow and makes our community even better.",
+        "refundPolicyTitle": "Cancellation Policy",
+        "refundPolicyText": "You can cancel your appointment at any time; however, 20% of the payment will be retained as a down payment.",
+        "journeyTitle": "Your Journey with Us",
+        "journeyStep1": "Browse Artists",
+        "journeyStep2": "Select Artist",
+        "journeyStep3": "Book Appointment",
+        "journeyStep4": "Chat with Artist",
+        "journeyStep5": "Get Tattooed",
+        "exploreArtists": "Explore the Showroom",
+        "cta2": "Find your Dream Artist",
+        "faq": "Questions?"
+    },
+    "showroom": {
+        "sort": "Sort",
+        "az": "Alphabetically",
+        "za": "Z to A",
+        "price-asc": "Highest price",
+        "price-desc": "Lowest price",
+        "price": "Price",
+        "min-price": "Min Price",
+        "max-price": "Max Price",
+        "style": "Style",
+        "location": "Location",
+        "postalCode": "Postal Code",
+        "apply": "Apply",
+        "reset": "Reset Filters",
+        "no-match": "No artists match this filter",
+        "per-hour": "per hour",
+        "artist-detail-page": "Artist Detail Page"
+    },
+    "style": {
+        "Basic Linework": "Basic Linework",
+        "Tribal": "Tribal",
+        "Traditional": "Traditional",
+        "Watercolor": "Watercolor",
+        "Realism": "Realism",
+        "Geometric": "Geometric",
+        "Portraiture": "Portraiture",
+        "Hyperrealism": "Hyperrealism",
+        "Biomechanical": "Biomechanical",
+        "Full Color Realism": "Full Color Realism"
+    },
+    "size": {
+        "Mini": "Mini (100 cm²)",
+        "S": "S (100 - 150 cm²)",
+        "M": "M (150 - 200 cm²)",
+        "L": "L (200 - 300 cm²)",
+        "XL": "XL (300 - 500 cm²)",
+        "XXL": "XXL (500 - 800 cm²)"
+    },
+    "paginator": {
+        "page": "Page",
+        "of": "of"
+    },
+    "artist-detail-page": {
+        "h1": "Artist Detail Page",
+        "portfolio-h1": "Artist portfolio",
+        "portfolio-empty": "Artist has not uploaded any pictures yet."
+    },
+    "artist-summary": {
+        "h1": "Artist Summary",
+        "edit": "Edit Profile",
+        "city": "City",
+        "rating": "Rating",
+        "rate": "Hourly Rate",
+        "back-to-showroom": "Back to Showroom",
+        "book-an-appointment": "Book an Appointment"
+    },
+    "appointments": {
+        "h1": "My Appointments",
+        "status-filter": "Status Filter",
+        "order-placed": "Order placed",
+        "total": "Total",
+        "artist": "Artist",
+        "order-number": "Order",
+        "invoice": "Invoice",
+        "order-status": "Order status:",
+        "name": "Name:",
+        "next-appointment": "Next appointment:",
+        "view-artist-button": "View Artist",
+        "appointment-details-button": "View Appointment Details",
+        "empty-message": "You haven't planned any appointments yet.",
+        "empty-action": "Go to Showroom"
+    },
+    "status": {
+        "Paid": "Paid",
+        "Removed": "Removed",
+        "Declined": "Declined",
+        "Accepted": "Accepted",
+        "Canceled": "Canceled",
+        "Done": "Done"
+    },
+    "profile": {
+        "title": "My Profile",
+        "changePassword": "Change password",
+        "profileInformation": "Profile Information",
+        "name": "Name",
+        "joinedOn": "Joined on",
+        "email": "E-Mail",
+        "instagram": "Instagram",
+        "address": {
+            "title": "Address",
+            "edit": "Edit Address",
+            "line1": "Line 1",
+            "line2": "Line 2",
+            "city": "City",
+            "postalCode": "Postal Code",
+            "country": "Country",
+            "setAddress": "You have to set an Address to be listed in the Showroom.",
+            "cityOnly": "Only your City will be displayed. The full Address will only be displayed to the Customer after you accept the Appointment."
+        },
+        "styles": {
+            "title": "Tattoo Styles",
+            "change": "Change Style"
+        },
+        "hourlyRate": {
+            "title": "Hourly Rate",
+            "change": "Change Hourly Rate",
+            "description": "This represents the rate with all fees and taxes, inclusive of the platform fee and VAT.",
+            "rate": "Hourly Rate"
+        },
+        "portfolio": {
+            "title": "Portfolio",
+            "upload": "Upload new pictures",
+            "deleteAll": "Delete all pictures",
+            "deletePicture": "Delete picture"
+        }
+    },
+    "calendar": {
+        "title": "My Calendar",
+        "working-hours": {
+            "title": "Working Hours",
+            "not-set": "You have not set your working hours yet. Set your working hours to be displayed in the showroom.",
+            "set-button": "Set Working Hours",
+            "edit-button": "Edit Working Hours"
+        },
+        "holidays": {
+            "title": "Holidays",
+            "create-new": "Create new Holiday",
+            "delete": "Delete",
+            "empty": "No holidays added yet."
+        },
+        "calendar-section": {
+            "title": "Calendar",
+            "legend": {
+                "appointment": "Appointment",
+                "holiday": "Holiday",
+                "working-day": "Working Day",
+                "not-free": "Busy",
+                "free": "Available"
+            }
+        },
+        "holidayDeleted": "Holiday deleted, happy working!",
+        "holidayDeleteFailed": "Failed deleting holiday",
+        "today": "Today",
+        "prevMonth": "Previous Month",
+        "nextMonth": "Next Month",
+        "daysOfWeek": {
+            "mon": "Mon",
+            "tue": "Tue",
+            "wed": "Wed",
+            "thu": "Thu",
+            "fri": "Fri",
+            "sat": "Sat",
+            "sun": "Sun"
+        },
+        "statuses": {
+            "appointment": "Appointment",
+            "holiday": "Holiday",
+            "workingDay": "Working Day"
+        }
+    },
+    "messenger": {
+        "firstQuestion": "Be the first to ask a question about the appointment!",
+        "title": "Messenger",
+        "chatRooms": "Chat Rooms",
+        "appointment": "Appointment",
+        "createdOn": "Appointment created on:",
+        "goToAppointment": "Go to appointment",
+        "typeMessage": "Type a message..."
+    },
+    "appointmentDetails": {
+        "title": "Appointment Details",
+        "orderedOn": "Ordered on",
+        "orderNumber": "Order",
+        "status": "Status",
+        "goToArtistPage": "Go to Artist Page",
+        "yourAppointments": "Your Appointments",
+        "customer": "Customer",
+        "artist": "Artist",
+        "hourlyRate": "Hourly rate",
+        "studioAddress": "Studio Address",
+        "problemWithAppointment": "Problem with your appointment?",
+        "removeAppointment": "Remove appointment",
+        "cancelAppointment": "Cancel appointment",
+        "leaveReview": "Leave a Review",
+        "acceptAppointment": "Accept appointment",
+        "declineAppointment": "Decline appointment",
+        "appointmentDone": "Appointment done",
+        "tattooInformation": "Tattoo Information",
+        "bodyPart": "Body Part",
+        "description": "Description",
+        "size": "Size",
+        "quality": "Style",
+        "estimatedTime": "Estimated Time",
+        "subtotal": "Subtotal",
+        "dates": "Dates",
+        "paymentSummary": "Payment Summary",
+        "appointmentStatus": "Appointment Status",
+        "actualTime": "Actual Time",
+        "tattooPictureAlt": "Tattoo Picture"
+    },
+    "appointmentStepper": {
+        "title": "Set a new Appointment",
+        "steps": {
+            "tattoo": "Tattoo",
+            "picture": "Picture",
+            "price": "Price",
+            "date": "Date",
+            "payment": "Payment",
+            "checkout": "Checkout"
+        },
+        "priceStep": {
+            "heading": "Estimated Price",
+            "subtotal": "Subtotal",
+            "estimatedTime": "Estimated Time",
+            "hours": "hours",
+            "disclaimer": "This represents only an estimated time for making the tattoo. If the tattoo takes shorter than expected, the artist will log that in the system and you will get a refund for every full hour."
+        },
+        "paymentStep": {
+            "subtotal": "Subtotal"
+        },
+        "checkoutStep": {
+            "payButton": "Pay"
+        },
+        "buttons": {
+            "next": "Next",
+            "back": "Back"
+        }
+    },
+    "tattooForm": {
+        "title": "Where do you want your new Tattoo?",
+        "bodyPartInput": "Example: Forearm",
+        "styleHeader": "Choose your desired Style",
+        "sizeHeader": "Choose your desired Size"
+    },
+    "uploadTattoo": {
+        "description": {
+            "title": "Leave a short description",
+            "label": "Description",
+            "placeholder": "A description helps the artist visualize the tattoo!"
+        },
+        "upload": {
+            "title": "Upload one or more images of the tattoo template",
+            "label": "Upload your tattoo motive",
+            "placeholder": "",
+            "browse": "Browse",
+            "removeAll": "Remove All Pictures"
+        }
+    },
+    "checkoutCalendar": {
+        "chooseDates": "Choose {{requiredDates}} Date",
+        "selectDates": "Please select {{requiredDates}} date for your appointment.",
+        "todayButton": "Today",
+        "selectedDates": "Selected Date for Appointment:",
+        "noDates": "No available dates for the selected tattoo options. Please try a different tattoo configuration.",
+        "weekdays": {
+            "monday": "Mon",
+            "tuesday": "Tue",
+            "wednesday": "Wed",
+            "thursday": "Thu",
+            "friday": "Fri",
+            "saturday": "Sat",
+            "sunday": "Sun"
+        }
+    },
+    "billingInfo": {
+        "title": "Billing and appointment information",
+        "fields": {
+            "bodyPart": "Body Part",
+            "size": "Size",
+            "style": "Style",
+            "description": "Description",
+            "estimatedTime": "Estimated Time",
+            "estimatedSubtotal": "Estimated Subtotal",
+            "dateTime": "Date & Time",
+            "paymentDetails": "Payment details"
+        },
+        "hours": "hours"
+    },
+    "identityConfirmation": {
+        "title": "Confirm your identity",
+        "description": "A confirmation code was sent to {{email}}. It may take up to a minute for you to receive this code. Don't forget to check your spam folder!",
+        "label": "Confirmation Code",
+        "placeholder": "6-digit code",
+        "submit": "Submit"
+    },
+    "register": {
+        "title": "Register",
+        "registerAs": "Register as:",
+        "artist": "Artist",
+        "customer": "Customer",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "Email",
+        "instagram": "Instagram",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "passwordRequired": "Password is required",
+        "passwordMismatch": "Passwords do not match",
+        "hourlyRate": "Hourly Rate",
+        "hourlyRatePlaceholder": "Enter hourly rate in €",
+        "alreadyHaveAccount": "Already have an account?",
+        "login": "Login",
+        "submit": "Register"
+    },
+    "login": {
+        "title": "Login",
+        "email": "Email address",
+        "emailPlaceholder": "name@example.com",
+        "password": "Password",
+        "passwordPlaceholder": "Password",
+        "rememberMe": "Remember me",
+        "signIn": "Sign in",
+        "forgotPassword": "Forgot password?",
+        "noAccount": "Don't have an account?",
+        "register": "Register"
+    },
+    "review": {
+        "title": "Create Review",
+        "orderedOn": "Ordered on",
+        "orderNumber": "Order #",
+        "status": "Status",
+        "overallRating": "Overall rating",
+        "headline": {
+            "label": "Add a headline",
+            "placeholder": "What's most important to know?"
+        },
+        "writtenReview": {
+            "label": "Add a written review",
+            "placeholder": "Share your experience or thoughts"
+        },
+        "notification": "We will notify you via email as soon as your review is processed.",
+        "submit": "Create Review"
+    },
+    "reviewSubmitted": {
+        "title": "Review submitted - Thank you!",
+        "processingMessage": "We're processing your review. This might take several days, so we appreciate your patience. We will email you when this is complete."
+    },
+    "reviews": {
+        "title": "Reviews",
+        "from": "From:",
+        "reviewedOn": "Reviewed on",
+        "empty-state": "There are no reviews for this artist yet.",
+        "back-text": "Back to Artist"
+    },
+    "passwordReset": {
+        "title": "Trouble logging in?",
+        "description": "Enter your email and we'll send you a link to get back into your account.",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Enter your email",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Enter a valid email",
+        "sendLink": "Send Reset Link",
+        "orText": "OR",
+        "createAccount": "Create new account",
+        "backToLogin": "Back to login"
+    },
+    "resetPassword": {
+        "title": "Create A Strong Password",
+        "description": "Your password must be at least 6 characters long and should include a combination of numbers, letters, and special characters (!§$%).",
+        "newPasswordLabel": "New Password",
+        "newPasswordPlaceholder": "Enter your new password",
+        "newPasswordError": "Password is required and must meet the criteria.",
+        "submitButton": "Reset Password"
+    },
+    "appointmentActions": {
+        "removeTitle": "Remove Appointment",
+        "removeMessage": "Are you sure you want to remove this appointment? This process can't be reversed.",
+        "declineTitle": "Decline Appointment",
+        "declineMessage": "Are you sure you want to decline this appointment? This process can't be reversed.",
+        "acceptTitle": "Accept Appointment",
+        "acceptMessage": "Do you want to accept this appointment?",
+        "cancelTitle": "Cancel Appointment",
+        "cancelMessage": "Are you sure you want to cancel this appointment? You will get a refund of 80% of the initial payment. This process can't be reversed.",
+        "doneSuccess": "Appointment updated successfully!",
+        "doneError": "An error occurred while updating the appointment."
+    },
+    "appointmentDoneForm": {
+        "title": "Appointment Done Form",
+        "warning": "Once you confirm this form, you cannot undo this action!",
+        "confirmationQuestion": "Is the appointment done?",
+        "yes": "Yes",
+        "no": "No",
+        "timeQuestion": "How long did you work today?",
+        "hours": "hours",
+        "cancel": "Cancel",
+        "confirm": "Confirm"
+    },
+    "editProfile": {
+        "deletePictureTitle": "Delete Picture",
+        "deletePictureMessage": "Do you really want to delete this picture from your portfolio? You can't revert this process.",
+        "deletePortfolioTitle": "Delete All Pictures",
+        "deletePortfolioMessage": "Are you sure you want to delete all pictures in your portfolio? This action cannot be undone."
+    },
+    "editDialog": {
+        "password": {
+            "success": "Password change successful",
+            "error": "Error updating the password",
+            "old": "Old Password",
+            "new": "New Password",
+            "oldPlaceholder": "Enter old password",
+            "newPlaceholder": "Enter new password"
+        },
+        "address": {
+            "success": "Address updated successfully",
+            "error": "Error updating address",
+            "validateSuccess": "Address validated: {{address}}",
+            "validateError": "Invalid address",
+            "validateApiError": "Error while validating the address",
+            "line1": "Line 1",
+            "line2": "Line 2",
+            "city": "City",
+            "postalCode": "Postal Code",
+            "country": "Country"
+        },
+        "style": {
+            "success": "Style update successful!",
+            "error": "Error updating styles",
+            "label": "Styles"
+        },
+        "portfolio": {
+            "success": "Portfolio update successful! It can take a minute until the new pictures are visible.",
+            "error": "Error updating the portfolio",
+            "fileTypeError": "Only PNG and JPG files are allowed.",
+            "maxFilesError": "You can only upload up to 3 pictures.",
+            "label": "Upload new Profile Pictures",
+            "placeholder": "Drag & Drop or select files",
+            "browse": "Browse"
+        },
+        "hourlyRate": {
+            "success": "Hourly rate update successful!",
+            "error": "Error updating hourly rate",
+            "label": "Hourly Rate (€)",
+            "placeholder": "Enter hourly rate"
+        },
+        "actions": {
+            "return": "Return",
+            "send": "Send"
+        },
+        "title": {
+            "password": "Edit password",
+            "address": "Edit address",
+            "style": "Edit style",
+            "hourlyRate": "Edit hourly Rate",
+            "portfolio": "Edit portfolio"
+        }
+    },
+    "days": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday"
+    },
+    "availability-dialog": {
+        "working-hours": {
+            "step1-title": "Select Days You Want to Work",
+            "step2-title": "Select Working Hours for Selected Days",
+            "start-time-label": "Start Time",
+            "end-time-label": "End Time",
+            "cancel-button": "Cancel",
+            "next-button": "Next",
+            "send-button": "Send"
+        },
+        "add-holiday": {
+            "title": "Set Holiday Dates",
+            "date-range-label": "Enter a date range",
+            "start-date-placeholder": "Start date",
+            "end-date-placeholder": "End date",
+            "start-date-required-error": "Start date is required",
+            "end-date-required-error": "End date is required",
+            "cancel-button": "Cancel",
+            "send-button": "Send"
+        },
+        "days": {
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday",
+            "sunday": "Sunday"
+        }
+    },
+    "faq": {
+        "title": "Frequently Asked Questions",
+        "sections": {
+            "artists": "Artists",
+            "customers": "Customers"
+        },
+        "artists": {
+            "questions": {
+                "cut": {
+                    "question": "How much of the cut does the artist get?",
+                    "answer": "Artists receive 94% of the total payment for each appointment. The remaining amount covers platform services and transaction fees."
+                },
+                "accept_appointments": {
+                    "question": "Do I have to accept every appointment?",
+                    "answer": "No, you are not obligated to accept every appointment. However, declining too many appointments may lead to your account being flagged for review, as customer satisfaction is a priority on our platform."
+                },
+                "cancel_appointments": {
+                    "question": "What happens if the customer cancels an appointment after I accepted it?",
+                    "answer": "If a customer cancels an appointment, you are entitled to 10% of the initial payment."
+                },
+                "miss_appointments": {
+                    "question": "What happens if I can't attend an appointment?",
+                    "answer": "As an artist, you are fully responsible for managing your appointments. If you can't attend, promptly contact the customer through the chat feature to arrange a new date for the appointment."
+                },
+                "set_holidays": {
+                    "question": "How can I set holidays?",
+                    "answer": "You can easily set holidays using the Calendar feature available once you register."
+                },
+                "showroom_listing": {
+                    "question": "What do I have to do to be listed in the showroom?",
+                    "answer": "To be listed in the showroom, you need to fulfill the following requirements:",
+                    "list": {
+                        "address": "Provide a valid address for your studio. This address will not be made public but is necessary for verification purposes.",
+                        "portfolio": "Upload a portfolio with at least 5 pictures. The portfolio will be vetted by our team to ensure quality and authenticity. You will get a response after about 24 hours.",
+                        "login": "Log in to your account regularly. If you do not log in for 12 consecutive days, your account will be temporarily disabled. Logging in again will immediately reactivate your account and reset the timer."
+                    }
+                }
+            }
+        },
+        "customers": {
+            "questions": {
+                "refund": {
+                    "question": "Can I cancel my appointment?",
+                    "answer": "Yes, you can cancel your appointment up until 24 hours before the appointment."
+                },
+                "no-answer": {
+                    "question": "What happens if the artist does not respond?",
+                    "answer": "Artists are naturally motivated to respond promptly as it is part of their profession. Additionally, if an artist does not reply within two days, your appointment will automatically be marked as declined."
+                },
+                "artist_qualification": {
+                    "question": "How can I be sure the artist is qualified?",
+                    "answer": "All our artists are carefully vetted, with verified portfolios and years of experience."
+                },
+                "cancel": {
+                    "question": "Where can I cancel my appointment?",
+                    "answer": "In the appointment section of your profile."
+                },
+                "time_refund": {
+                    "question": "What happens if the tattoo takes less time than estimated?",
+                    "answer": "You'll receive a refund for every full hour less than the estimated time."
+                },
+                "reschedule": {
+                    "question": "Can I reschedule my appointment?",
+                    "answer": "Yes, you can reschedule your appointment anytime by contacting the artist directly through the chat feature."
+                }
+            }
+        }
+    },
+    "footer": {
+        "links": {
+            "terms": "Terms",
+            "privacy": "Privacy",
+            "imprint": "Imprint",
+            "contact": "Contact"
+        },
+        "social": {
+            "instagram-alt": "Instagram logo"
+        }
+    },
+    "contact": {
+        "title": "Contact",
+        "description": "If you encounter any issues with your appointment, discover a bug, or have questions or suggestions regarding the features of our platform, please do not hesitate to reach out to us. We typically respond within 2 business days."
+    }
+}

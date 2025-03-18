@@ -1,0 +1,8 @@
+<div class="flex items-end space-x-2">
+    <textarea class="w-full p-2 rounded-2xl resize-none bg-gray-800" rows="1" [(ngModel)]="message"
+        (keypress)="handleKeyPress($event)" placeholder="Type a message...">
+    </textarea>
+    <button mat-stroked-button (click)="handleSend()">
+        Send
+    </button>
+</div>

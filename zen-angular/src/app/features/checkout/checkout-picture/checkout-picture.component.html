@@ -1,0 +1,38 @@
+<div [formGroup]="form">
+  <!-- Description -->
+  <div>
+    <h1 class="text-xl font-semibold mb-4">{{ 'uploadTattoo.description.title' | translate }}</h1>
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>{{ 'uploadTattoo.description.label' | translate }}</mat-label>
+      <textarea matInput formControlName="description" rows="3" class="w-full p-2 border rounded-lg"
+        placeholder="{{ 'uploadTattoo.description.placeholder' | translate }}"></textarea>
+    </mat-form-field>
+  </div>
+  <!-- File upload -->
+  <div class="mt-6">
+    <h1 class="text-xl font-semibold mb-4">{{ 'uploadTattoo.upload.title' | translate }}</h1>
+    <div class="drag-drop-area" [ngClass]="{ 'dragging': isDragging }" (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>{{'uploadTattoo.upload.label' | translate}}</mat-label>
+        <div class="file-input-container">
+          <input matInput [placeholder]="'uploadTattoo.upload.placeholder' | translate" [value]="getFileNames()"
+            readonly />
+          <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput id="fileInput" multiple
+            accept=".png, .jpg, .jpeg" />
+          <div>
+            <button mat-button matSuffix (click)="openFileBrowser()">{{ 'uploadTattoo.upload.browse' | translate
+              }}</button>
+          </div>
+        </div>
+      </mat-form-field>
+    </div>
+    <button mat-button color="warn" class="mt-4 text-red-600 hover:underline" (click)="removeFiles()">
+      {{ 'uploadTattoo.upload.removeAll' | translate }}
+    </button>
+  </div>
+
+  <div *ngIf="selectedFiles.length > 0" class="mt-4 text-right">
+    <p *ngFor="let file of selectedFiles" class="text-xl font-extrabold">{{ file.name }}</p>
+  </div>
+</div>

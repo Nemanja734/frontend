@@ -1,0 +1,95 @@
+<div class="mx-auto max-w-screen-2xl">
+    <h2 class="header-1 mb-4">{{ 'messenger.title' | translate }}</h2>
+    <mat-card>
+        <div class="flex h-screen">
+            <!-- Sidebar (Chat Rooms) -->
+            <mat-selection-list class="lg:border-r lg:w-96" [multiple]="false"
+                *ngIf="!isMobile || selectedGroup === undefined" [ngClass]="{'w-full': isMobile}">
+                <div mat-subheader class="text-2xl">{{ 'messenger.chatRooms' | translate }}</div>
+                @for (group of chatGroups; track $index) {
+                <div class="mx-4">
+                    <mat-divider></mat-divider>
+                </div>
+                <mat-list-option class="flex gap-4" (click)="selectChatGroup(group)"
+                    [class.unread]="group.isRead === false">
+                    <img matListItemAvatar src="{{group.imageUrl}}" alt="{{ 'messenger.pictureOfTattoo' | translate }}">
+                    <h1 matListItemTitle [class.unread]="group.isRead === false" class="overflow-auto">
+                        <span *ngIf="accountService.currentUser()?.email !== group.artistEmail">{{group.artistEmail}}</span>
+                        <span *ngIf="accountService.currentUser()?.email !== group.customerEmail">{{group.customerEmail}}</span>
+                    </h1>
+                    <p matListItemLine>{{group.lastMessage}}</p>
+                </mat-list-option>
+                }
+            </mat-selection-list>
+
+            <!-- Main Chat Area -->
+            <div *ngIf="selectedGroup !== undefined" class="w-full flex flex-col">
+                <!-- Chat Header -->
+                <div class="flex flex-col lg:flex-row gap-2 justify-between items-center p-2 border-b">
+                    <div>
+                        <h2 *ngIf="selectedGroup.artistEmail !== this.accountService.currentUser()?.email">
+                            {{selectedGroup.artistEmail}}</h2>
+                        <h2 *ngIf="selectedGroup.customerEmail !== this.accountService.currentUser()?.email">
+                            {{selectedGroup.customerEmail}}</h2>
+                        <h2>
+                            {{ 'messenger.createdOn' | translate }}
+                            {{selectedGroup.createdDate | date:'medium'}}
+                        </h2>
+                    </div>
+                    <div class="ml-auto flex gap-2">
+                        <button *ngIf="isMobile" mat-icon-button (click)="unselectGroup()">
+                            <mat-icon>arrow_back</mat-icon>
+                        </button>
+                        <button mat-stroked-button routerLink="/appointments/{{selectedGroup.appointmentId}}">
+                            {{ 'messenger.goToAppointment' | translate }}
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Message Area -->
+                <div #messageContainer class="flex-grow p-2 overflow-y-auto space-y-4">
+                    @for (message of chatMessages; track $index) {
+                    <!-- Date Separator -->
+                    @if (message.isSeparator) {
+                    <div class="flex flex-col items-center text-gray-500 text-xs my-2">
+                        <span class="px-2 py-1 rounded-md bg-gray-300">
+                            {{message.message}}
+                        </span>
+                    </div>
+                    }
+                    <!-- Outgoing Message -->
+                    @else if (message.senderEmail === accountService.currentUser()?.email) {
+                    <div class="flex justify-end mb-2">
+                        <div class="max-w-lg pr-2 pl-4 py-1 rounded-lg bg-blue-500 shadow-md overflow-auto break-words">
+                            <p class="text-sm">{{message.message}}</p>
+                            <p class="text-xs text-end mt-1 text-gray-200">{{message.timestamp | date:'shortTime'}}</p>
+                        </div>
+                    </div>
+                    }
+                    <!-- Incoming Message -->
+                    @else if (!message.isSeparator) {
+                    <div class="flex justify-start mb-2">
+                        <div
+                            class="max-w-lg pr-4 pl-2 py-1 rounded-lg bg-gray-300 text-black shadow-md overflow-auto break-words">
+                            <p class="text-sm">{{message.message}}</p>
+                            <p class="text-xs text-end mt-1 text-gray-600">{{message.timestamp | date:'shortTime'}}</p>
+                        </div>
+                    </div>
+                    }
+                    }
+                </div>
+
+                <!-- Message Input Field at the Bottom -->
+                <div class="p-2 border-t">
+                    <mat-form-field class="w-full rounded-lg">
+                        <input matInput placeholder="{{ 'messenger.typeMessage' | translate }}"
+                            [(ngModel)]="messageText" (keydown)="onKeydown($event)">
+                        <button mat-icon-button matSuffix (click)="sendMessage()">
+                            <mat-icon>send</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>

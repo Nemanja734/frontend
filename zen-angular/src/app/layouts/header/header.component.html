@@ -1,0 +1,83 @@
+<header class="bg-1 w-full h-16 fixed top-0 z-50 border-b-2 border-blue-800 shadow-md">
+    <div class="relative h-16 flex align-middle items-center justify-between max-w-screen-xl mx-auto p-3">
+        <img routerLink="/" src="/images/logo.png" alt="logo-light" class="h-full cursor-pointer">
+        <nav class="flex md:gap-2 xl:gap-10 text-2xl uppercase items-center h-full absolute left-80 ml-10 lg:ml-0 lg:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div class="relative group h-full">
+                <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" 
+                   class="px-4 py-2 relative z-10 h-full flex items-center">{{'nav.home' | translate}}</a>
+                <div class="absolute inset-0 bg-secondary-50 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+            </div>
+            <div class="relative group h-full">
+                <a routerLink="/showroom" routerLinkActive="active" 
+                   class="px-4 py-2 relative z-10 h-full flex items-center">{{'nav.showroom' | translate}}</a>
+                <div class="absolute inset-0 bg-secondary-50 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+            </div>
+            <div class="relative group h-full">
+                <a routerLink="/frequently-asked-questions" routerLinkActive="active" 
+                   class="px-4 py-2 relative z-10 h-full flex items-center whitespace-nowrap">{{'nav.faq' | translate}}</a>
+                <div class="absolute inset-0 bg-secondary-50 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+            </div>
+            <div *appIsAdmin class="relative group h-full">
+                <a routerLink="/admin" routerLinkActive="active" 
+                   class="px-4 py-2 relative z-10 h-full flex items-center">Admin</a>
+                <div class="absolute inset-0 bg-secondary-50 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+            </div>
+        </nav>
+
+        <div class="flex gap-3 align-middle">
+            @if (accountService.currentUser()) {
+            <button 
+                mat-button 
+                class=""
+                [matMenuTriggerFor]="menu" 
+                [matBadge]="badge() ? messengerService.unread() : ''" matBadgePosition="above after">
+                <mat-icon>arrow_drop_down</mat-icon>
+                <span>{{accountService.currentUser()?.email}}</span>
+            </button>
+            } @else {
+            <button routerLink="/account/register" mat-stroked-button>{{'nav.register' | translate}}</button>
+            <button routerLink="/account/login" mat-stroked-button>{{'nav.login' | translate}}</button>
+            }
+            <button *ngIf="currentLang !== 'en'" (click)="switchLanguage('en')">
+                <img src="/i18n/flags/de.png" alt="english" class="h-8 w-8">
+            </button>
+            <button *ngIf="currentLang !== 'de'" (click)="switchLanguage('de')">
+                <img src="/i18n/flags/en.png" alt="german" class="h-8 w-8">
+            </button>
+        </div>
+    </div>
+</header>
+
+@if (busyService.loading) {
+    <mat-progress-bar mode="indeterminate" class="progress-bar top-16 z-50"></mat-progress-bar>
+}
+
+<mat-menu #menu="matMenu" class="px-5">
+    @if (accountService.currentUser()?.roles?.includes("Artist")) {
+        <button mat-menu-item class="px-3" routerLink="edit-profile">
+            <mat-icon>account_circle</mat-icon>
+            {{'nav.profile' | translate}}
+        </button>
+        <button mat-menu-item class="px-3" routerLink="calendar">
+            <mat-icon>calendar_month</mat-icon>
+            {{'nav.calendar' | translate}}
+        </button>
+    }
+    <button mat-menu-item class="px-3" routerLink="appointments">
+        <mat-icon>history</mat-icon>
+        {{'nav.appointments' | translate}}
+    </button>
+    <button *ngIf="accountService.currentUser()?.roles?.includes('Artist')" mat-menu-item class="px-3" routerLink="finance">
+        <mat-icon>paid</mat-icon>
+        {{'nav.financials' | translate}}
+    </button>
+    <button mat-menu-item class="px-3" routerLink="messenger" [matBadge]="badge() ? messengerService.unread() : ''" matBadgePosition="above after">
+        <mat-icon>notifications</mat-icon>
+        {{'nav.messenger' | translate}}
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item class="px-3" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        {{'nav.logout' | translate}}
+    </button>
+</mat-menu>

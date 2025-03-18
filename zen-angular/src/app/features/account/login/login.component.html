@@ -1,0 +1,30 @@
+<mat-card class="max-w-lg mx-auto p-8">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="text-center mb-6">
+            <h1 class="text-3xl font-semibold">{{ 'login.title' | translate }}</h1>
+        </div>
+        <mat-form-field appearance="outline" class="w-full mb-4">
+            <mat-label>{{ 'login.email' | translate }}</mat-label>
+            <input formControlName="email" type="email" [placeholder]="'login.emailPlaceholder' | translate" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-full mb-4">
+            <mat-label>{{ 'login.password' | translate }}</mat-label>
+            <input matInput [placeholder]="'login.passwordPlaceholder' | translate" [type]="hide ? 'password' : 'text'" 
+                formControlName="password" required>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off':'visibility'}}</mat-icon>
+        </mat-form-field>
+        <mat-checkbox formControlName="rememberMe" class="w-full mb-4">
+            {{ 'login.rememberMe' | translate }}
+        </mat-checkbox>
+        <button mat-flat-button type="submit" class="w-full py-2">{{ 'login.signIn' | translate }}</button>
+    </form>
+    <div class="m-4">
+        <mat-divider></mat-divider>
+    </div>
+    <a routerLink="/account/password/reset" class="text-center">{{ 'login.forgotPassword' | translate }}</a>
+</mat-card>
+
+<div class="mx-auto m-4 md:m-8 text-center">
+    <p>{{ 'login.noAccount' | translate }}</p>
+    <a href="/account/register" class="underline">{{ 'login.register' | translate }}</a>
+</div>

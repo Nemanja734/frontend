@@ -1,0 +1,42 @@
+<div class="mt-4 w-full">
+    <dl>
+        <!-- Tattoo Information -->
+        <h4 class="text-xl mb-4 font-semibold">{{ 'billingInfo.title' | translate }}</h4>
+        <div class="sm:grid sm:grid-cols-2">
+            <dl>
+                <dt class="font-medium">{{ 'billingInfo.fields.bodyPart' | translate }}</dt>
+                <dd class="mb-1">{{ appointment.bodyPart }}</dd>
+            </dl>
+            <dl>
+                <dt class="font-medium">{{ 'billingInfo.fields.size' | translate }}</dt>
+                <dd class="mb-1">{{ appointment.size | sizeEnum }}</dd>
+            </dl>
+            <dl>
+                <dt class="font-medium">{{ 'billingInfo.fields.style' | translate }}</dt>
+                <dd class="mb-1">{{ 'style.' + (appointment.quality | qualityEnum) | translate }}</dd>
+            </dl>
+            <dl>
+                <dt class="font-medium">{{ 'billingInfo.fields.description' | translate }}</dt>
+                <dd class="mb-1">{{ appointment.description }}</dd>
+            </dl>
+            <dl>
+                <dt class="font-medium">{{ 'billingInfo.fields.estimatedTime' | translate }}</dt>
+                <dd class="mb-1">{{ appointment.estimatedTime }} {{ 'billingInfo.hours' | translate }}</dd>
+            </dl>
+            <dl>
+                <dt class="font-medium">{{ 'billingInfo.fields.estimatedSubtotal' | translate }}</dt>
+                <dd class="mb-1">{{ appointment.subtotal | globalCurrency }}</dd>
+            </dl>
+        </div>
+        <mat-divider></mat-divider>
+        <!-- Date and Time -->
+        <dt class="font-medium">{{ 'billingInfo.fields.dateTime' | translate }}</dt>
+        <div class="mb-1">
+            <dd *ngFor="let date of selectedDates">{{ date | date:'medium' }}</dd>
+        </div>
+        <mat-divider></mat-divider>
+        <!-- Payment Details -->
+        <dt class="font-medium">{{ 'billingInfo.fields.paymentDetails' | translate }}</dt>
+        <dd class="mb-1">{{ confirmationToken?.payment_method_preview | paymentCard }}</dd>
+    </dl>
+</div>

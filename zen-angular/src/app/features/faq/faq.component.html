@@ -1,0 +1,83 @@
+<div>
+    <div>
+        <div class="flex justify-center mb-6">
+            <button class="min-w-28 w-1/6 h-10 rounded-l-lg border border-black"
+                [ngClass]="{ 'bg-primary-10': selectedSection === 'artists', 'bg-primary-20 hover:opacity-90': selectedSection !== 'artists' }"
+                (click)="toggleFAQ('artists')">
+                {{ 'faq.sections.artists' | translate }}
+            </button>
+            <button class="min-w-28 w-1/6 h-10 rounded-r-lg border border-black"
+                [ngClass]="{ 'bg-primary-10': selectedSection === 'customers', 'bg-primary-20 hover:opacity-90': selectedSection !== 'customers' }"
+                (click)="toggleFAQ('customers')">
+                {{ 'faq.sections.customers' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <!-- Artist Section -->
+    <div *ngIf="selectedSection === 'artists'">
+        <div class="px-4 rounded-lg">
+            <h1 class="text-center text-2xl md:text-4xl font-bold mb-4">{{ 'faq.title' | translate }}</h1>
+            <div class="max-w-4xl mx-auto">
+                <div *ngFor="let question of questionsArtist; let i = index">
+                    <div class="p-3 hover:backdrop-brightness-50">
+                        <!-- Question Header -->
+                        <div class="flex gap-4 items-center pb-2 cursor-pointer" (click)="toggleAnswerArtist(i)">
+                            <div class="flex gap-2 w-14 justify-between">
+                                <h1 class="text-4xl font-extrabold">{{ (i + 1) | number: '2.0'}}</h1>
+                                <mat-divider vertical></mat-divider>
+                            </div>
+                            <h2 class="font-bold text-lg">
+                                {{ 'faq.artists.questions.' + question + '.question' | translate }}
+                            </h2>
+                        </div>
+
+                        <!-- Answer Section -->
+                        <div class="answer" [class.open]="answerVisibleArtist[i]">
+                            <p *ngIf="question !== 'showroom_listing'">
+                                {{ 'faq.artists.questions.' + question + '.answer' | translate }}
+                            </p>
+                            <ul *ngIf="question === 'showroom_listing'" class="list-disc ml-6 mt-2">
+                                <li>{{ 'faq.artists.questions.showroom_listing.list.address' | translate }}</li>
+                                <li>{{ 'faq.artists.questions.showroom_listing.list.portfolio' | translate }}</li>
+                                <li>{{ 'faq.artists.questions.showroom_listing.list.login' | translate }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <mat-divider *ngIf="i < (questionsArtist.length-1)"></mat-divider>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Section -->
+    <div *ngIf="selectedSection === 'customers'">
+        <div class="px-4 rounded-lg">
+            <h1 class="text-center text-2xl md:text-4xl font-bold mb-4">{{ 'faq.title' | translate }}</h1>
+            <div class="max-w-4xl mx-auto">
+                <div *ngFor="let question of questionsCustomer; let i = index">
+                    <div class="p-3 hover:backdrop-brightness-50">
+                        <!-- Question Header -->
+                        <div class="flex gap-4 items-center pb-2 cursor-pointer" (click)="toggleAnswerCustomer(i)">
+                            <div class="flex gap-2 w-14 justify-between">
+                                <h1 class="text-4xl font-extrabold">{{ (i + 1) | number: '2.0' }}</h1>
+                                <mat-divider vertical></mat-divider>
+                            </div>
+                            <h2 class="font-bold text-lg">
+                                {{ 'faq.customers.questions.' + question + '.question' | translate }}
+                            </h2>
+                        </div>
+
+                        <!-- Answer Section -->
+                        <div class="answer" [class.open]="answerVisibleCustomer[i]">
+                            <p>
+                                {{ 'faq.customers.questions.' + question + '.answer' | translate }}
+                            </p>
+                        </div>
+                    </div>
+                    <mat-divider *ngIf="i < (questionsCustomer.length - 1)"></mat-divider>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

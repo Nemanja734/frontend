@@ -1,0 +1,17 @@
+<div class="flex flex-col min-h-screen w-full">
+    <app-header *ngIf="!isSmallScreen"></app-header>
+
+    <app-sidenav *ngIf="isSmallScreen"></app-sidenav>
+
+    <app-showroom-status *ngIf="!isHomeRoute" #showroomStatus></app-showroom-status>
+
+    <app-cookies></app-cookies>
+
+    <div 
+        [ngClass]="{'custom-container-1 w-full': !isHomeRoute && showroomStatusHeight === 0}"
+        [ngClass]="{'custom-container-2 w-full' : !isHomeRoute && showroomStatusHeight !== 0}">
+        <router-outlet></router-outlet>
+    </div>
+
+    <app-footer class="mt-auto"></app-footer>
+</div>

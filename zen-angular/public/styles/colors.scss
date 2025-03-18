@@ -1,0 +1,98 @@
+// Text Colors
+.text-primary-20 {
+    color: #ccd2e8;
+}
+
+.text-secondary-2,
+.active {
+    color: #7a0a0a !important;
+}
+
+.text-secondary-10 {
+    color: #ca9d9d;
+}
+
+// Background Colors
+.bg-1 {
+    background-color: #000;
+    color: #fff;
+}
+
+.bg-2 {
+    background-color: #080808;
+}
+
+.bg-3 {
+    background-color: red;
+}
+
+.bg-10 {
+    background-color: #1f1f1f;
+}
+
+.bg-primary-1 {
+    background-color: #020220;
+}
+
+.bg-primary-2 {
+    background-color: #001670;
+    // transition: background-color 0.2s ease;
+}
+
+// .bg-primary-2:hover {
+//     background-color: #001c8c;
+// }
+
+.bg-primary-10 {
+    background-color: #2f4683;
+}
+
+.bg-primary-20 {
+    background-color: #4364bb;
+}
+
+.bg-secondary-2 {
+    background-color: #7a0a0a;
+}
+
+.bg-secondary-50 {
+    background-color: #191211;
+}
+
+
+// Borders
+.border-primary-20 {
+    border-color: #4364bb;
+}
+
+.border-secondary-2 {
+    border-color: #7a0a0a;
+}
+
+// Buttons
+// Large, blue button
+.button-1 {
+    background-color: var(--primary);
+    transition: all 0.2s ease-out;
+    width: 250px;
+    padding: 0.5rem 0.7rem;
+    border-radius: 12px;
+    font-size: 1.2rem;
+}
+
+.button-1:hover {
+    background-color: #001c8c;
+    transform: translateY(-5px);
+}
+
+// Small, blue button with no rounded corners
+.button-2 {
+    background-color: var(--primary);
+    padding: 0.2rem 0.4rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.2s ease-out;
+}
+.button-2:hover {
+    border-color: #4364bb;
+}

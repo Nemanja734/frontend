@@ -1,0 +1,93 @@
+<div class="rounded-lg shadow-md">
+    <h2 class="text-xl font-medium mb-4">{{ 'checkoutCalendar.chooseDates' | translate:{ requiredDates: requiredDates }
+        }}</h2>
+    <p class="mb-4">{{ 'checkoutCalendar.selectDates' | translate:{ requiredDates: requiredDates } }}</p>
+    <div *ngIf="dateOptions.length > 0; else noDates">
+        <!-- Calendar Section -->
+        <div class="max-w-screen-sm rounded-lg shadow-2xl">
+            <!-- Calendar -->
+            <div>
+                <div class="flex items-center justify-center mb-4">
+                    <button mat-flat-button (click)="toToday()">{{ 'checkoutCalendar.todayButton' | translate
+                        }}</button>
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <button class="bg-blue-700 px-4 py-2 rounded hover:bg-blue-600" (click)="previousMonth()">
+                        &lt;
+                    </button>
+                    <h2 class="text-xl">
+                        {{ currentMonth | date: 'MMMM yyyy' }}
+                    </h2>
+                    <button class="bg-blue-700 px-4 py-2 rounded hover:bg-blue-600" (click)="nextMonth()">
+                        &gt;
+                    </button>
+                </div>
+                <div class="grid grid-cols-7 gap-2 text-center">
+                    <div class="font-bold">{{ 'checkoutCalendar.weekdays.monday' | translate }}</div>
+                    <div class="font-bold">{{ 'checkoutCalendar.weekdays.tuesday' | translate }}</div>
+                    <div class="font-bold">{{ 'checkoutCalendar.weekdays.wednesday' | translate }}</div>
+                    <div class="font-bold">{{ 'checkoutCalendar.weekdays.thursday' | translate }}</div>
+                    <div class="font-bold">{{ 'checkoutCalendar.weekdays.friday' | translate }}</div>
+                    <div class="font-bold">{{ 'checkoutCalendar.weekdays.saturday' | translate }}</div>
+                    <div class="font-bold">{{ 'checkoutCalendar.weekdays.sunday' | translate }}</div>
+                    <ng-container *ngFor="let day of calendarDays">
+                        <div class="hover:opacity-70 cursor-default">
+                            @if (isToday(day)) {
+                            <div class="py-4 px-1 sm:px-4 border rounded-lg bg-black">
+                                {{ day?.getDate() || ''}}
+                            </div>
+                            } @else if (isPast(day)) {
+                            <div class="py-4 px-1 sm:px-4 border rounded-lg">
+                                {{ day?.getDate() || ''}}
+                            </div>
+
+                            <!-- Selecting Dates for Appointment Section -->
+                            } @else if (requiredDates != undefined && day) {
+                            <!-- Date is not selected -->
+                            @if (day && this.isDateOption(day) && !this.isSelected(day)) {
+                            <div class="py-4 px-1 sm:px-4 border rounded-lg bg-green-700 cursor-pointer"
+                                (click)="day && toggleDateSelection(day)">
+                                {{ day?.getDate() || ''}}
+                            </div>
+                            <!-- Date is selected -->
+                            } @else if (this.isSelected(day!)) {
+                            <div class="py-4 px-1 sm:px-4 border rounded-lg bg-blue-700 cursor-pointer"
+                                (click)="day && toggleDateSelection(day)">
+                                {{ day?.getDate() || ''}}
+                            </div>
+                            } @else if (day) {
+                            <div class="py-4 px-1 sm:px-4 border rounded-lg bg-red-700" (click)="invalidDateSnack()">
+                                {{ day?.getDate() || ''}}
+                            </div>
+                            }
+                            <!-- For Saturday and Sunday -->
+                            } @else {
+                            <div class="py-4 px-1 sm:px-4 border rounded-lg h-full" (click)="invalidDateSnack()">
+                                {{ day?.getDate() || ''}}
+                            </div>
+                            }
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="flex justify-center items-center gap-8 my-4 calendar-legend"
+                    [attr.aria-label]="'calendar.calendar-section.legend' | translate">
+                    <div class="flex items-center gap-2">
+                        <span class="w-4 h-4 rounded-md bg-green-700"></span>
+                        <span>{{ 'calendar.calendar-section.legend.free' | translate }}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-4 h-4 rounded-md bg-red-700"></span>
+                        <span>{{ 'calendar.calendar-section.legend.not-free' | translate }}</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Selected Dates Summary -->
+            <h1 class="mt-4 text-2xl">{{ 'checkoutCalendar.selectedDates' | translate }}</h1>
+            <div *ngFor="let date of selectedDates">{{date | date:'medium'}}</div>
+        </div>
+    </div>
+
+    <ng-template #noDates>
+        <p class="text-gray-500">{{ 'checkoutCalendar.noDates' | translate }}</p>
+    </ng-template>
+</div>

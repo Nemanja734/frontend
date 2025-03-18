@@ -1,0 +1,6 @@
+@media (max-width: 800px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); // Reduce min width to fit at least 2 items
+        gap: 14px;
+    }
+}

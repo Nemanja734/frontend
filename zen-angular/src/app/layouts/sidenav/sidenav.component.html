@@ -1,0 +1,85 @@
+<header class="bg-1 w-full h-16 fixed top-0 z-10 border-b-2 border-blue-800 shadow-md">
+    <div class="relative h-16 flex items-center justify-between max-w-screen-xl mx-auto p-3">
+        <button class="p-2" (click)="toggleSidenav()">
+            <span class="material-icons">menu</span>
+        </button>
+        <img routerLink="/" src="/images/logo.png" alt="logo-light" class="h-full cursor-pointer">
+    </div>
+</header>
+
+@if (busyService.loading) {
+<mat-progress-bar mode="indeterminate" class="progress-bar top-16 z-50"></mat-progress-bar>
+}
+
+<!-- Sidenav -->
+<div [class.translate-x-0]="isSidenavOpen" [class.-translate-x-full]="!isSidenavOpen"
+    class="bg-2 fixed top-16 left-0 h-full w-60 shadow-lg z-50 transform transition-transform duration-300 ease-in-out">
+    <nav class="flex flex-col gap-4 p-4 text-lg">
+        <a routerLink="/" routerLinkActive="active" class="flex items-center gap-2" (click)="closeSidenav()">
+            {{'nav.home' | translate}}
+        </a>
+        <a routerLink="/showroom" routerLinkActive="active" class="flex items-center gap-2" (click)="closeSidenav()">
+            {{'nav.showroom' | translate}}
+        </a>
+        <a routerLink="/frequently-asked-questions" routerLinkActive="active" class="flex items-center gap-2" (click)="closeSidenav()">
+            {{'nav.faq' | translate}}
+        </a>
+        <div *appIsAdmin>
+            <a routerLink="/admin" routerLinkActive="active" class="flex items-center gap-2" (click)="closeSidenav()">
+                <span class="material-icons">admin_panel_settings</span>
+                Admin
+            </a>
+        </div>
+        <hr class="border-t">
+        <div *ngIf="accountService.currentUser()" class="flex flex-col gap-4 text-lg">
+            @if (accountService.currentUser()?.roles?.includes("Artist")) {
+            <a routerLink="/edit-profile" routerLinkActive="active" class="flex items-center gap-2"
+                (click)="closeSidenav()">
+                <span class="material-icons">account_circle</span>
+                {{'nav.profile' | translate}}
+            </a>
+            <a routerLink="/calendar" routerLinkActive="active" class="flex items-center gap-2"
+                (click)="closeSidenav()">
+                <span class="material-icons">calendar_month</span>
+                {{'nav.calendar' | translate}}
+            </a>
+            }
+            <a routerLink="/appointments" routerLinkActive="active" class="flex items-center gap-2"
+                (click)="closeSidenav()">
+                <span class="material-icons">history</span>
+                {{'nav.appointments' | translate}}
+            </a>
+            <a *ngIf="accountService.currentUser()?.roles?.includes('Artist')" routerLink="/finance" routerLinkActive="active" class="flex items-center gap-2"
+                (click)="closeSidenav()">
+                <span class="material-icons">paid</span>
+                {{'nav.financials' | translate}}
+            </a>
+            
+            <a routerLink="/messenger" routerLinkActive="active" class="flex items-center gap-2"
+                (click)="closeSidenav()">
+                <span class="material-icons">notifications</span>
+                {{'nav.messenger' | translate}}
+            </a>
+            <button (click)="logout(); closeSidenav()" class="flex items-center gap-2">
+                <span class="material-icons">logout</span>
+                {{'nav.logout' | translate}}
+            </button>
+        </div>
+        <div *ngIf="!accountService.currentUser()" class="flex flex-col gap-4 text-lg">
+            <a routerLink="/account/register" routerLinkActive="active" class="flex items-center gap-2"
+                (click)="closeSidenav()">
+                {{'nav.register' | translate}}
+            </a>
+            <a routerLink="/account/login" routerLinkActive="active" class="flex items-center gap-2"
+                (click)="closeSidenav()">
+                {{'nav.login' | translate}}
+            </a>
+        </div>
+        <button *ngIf="currentLang !== 'en'" (click)="switchLanguage('en')">
+            <img src="/i18n/flags/de.png" alt="english" class="h-8 w-8">
+        </button>
+        <button *ngIf="currentLang !== 'de'" (click)="switchLanguage('de')">
+            <img src="/i18n/flags/en.png" alt="german" class="h-8 w-8">
+        </button>
+    </nav>
+</div>

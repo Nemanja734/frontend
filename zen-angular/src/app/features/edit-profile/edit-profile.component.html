@@ -1,0 +1,101 @@
+<div *ngIf="user" class="max-w-screen-lg mx-auto">
+  <div class="flex flex-col md:flex-row mb-2 md:mb-4">
+    <h1 class="header-1 mb-2">{{ 'profile.title' | translate }}</h1>
+    <button mat-stroked-button class="mr-auto md:ml-auto md:mr-0" (click)="openEditDialog('password')">
+      <mat-icon>edit</mat-icon>{{ 'profile.changePassword' | translate }}
+    </button>
+  </div>
+
+  <!-- Profile Information Section -->
+  <mat-card class="mb-4">
+    <mat-card-header class="mb-2">
+      <mat-card-title>{{ 'profile.profileInformation' | translate }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="flex flex-col gap-2">
+        <p><strong>{{ 'profile.name' | translate }}:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+        <p><strong>{{ 'profile.joinedOn' | translate }}:</strong> {{ user.joinedOn | date:'medium' }}</p>
+        <p><strong>{{ 'profile.email' | translate }}:</strong> {{ user.email }}</p>
+        <p><strong>{{ 'profile.instagram' | translate }}:</strong> {{user.instagram}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Address Section -->
+  <mat-card class="mb-4">
+    <mat-card-header class="mb-2">
+      <mat-card-title>{{ 'profile.address.title' | translate }}</mat-card-title>
+      <button mat-stroked-button class="ml-auto mb-2 md:mb-0" (click)="openEditDialog('address')">
+        <mat-icon>edit</mat-icon>{{ 'profile.address.edit' | translate }}
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="user.address != null" class="grid grid-cols-1 gap-2">
+        <p><strong>{{ 'profile.address.line1' | translate }}:</strong> {{ user.address.line1 }}</p>
+        <p *ngIf="user.address.line2"><strong>{{ 'profile.address.line2' | translate }}:</strong> {{ user.address.line2 }}</p>
+        <p><strong>{{ 'profile.address.city' | translate }}:</strong> {{ user.address.city }}</p>
+        <p><strong>{{ 'profile.address.postalCode' | translate }}:</strong> {{ user.address.postalCode }}</p>
+        <p><strong>{{ 'profile.address.country' | translate }}:</strong> {{ user.address.country }}</p>
+      </div>
+      <h1 *ngIf="user.address == null">{{ 'profile.address.setAddress' | translate }}</h1>
+      <h1 *ngIf="user.address == null">{{ 'profile.address.cityOnly' | translate }}</h1>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Tattoo Style Section -->
+  <mat-card class="mb-4">
+    <mat-card-header class="mb-2">
+      <mat-card-title>{{ 'profile.styles.title' | translate }}</mat-card-title>
+      <button mat-stroked-button class="ml-auto mb-2 md:mb-0" (click)="openEditDialog('style')">
+        <mat-icon>edit</mat-icon>{{ 'profile.styles.change' | translate }}
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="styles-container">
+        <span *ngFor="let style of user.styles" class="style-tag">
+          {{ ('style.' + style.style) | translate }}
+        </span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Hourly Rate Section -->
+  <mat-card class="mb-4">
+    <mat-card-header class="mb-2">
+      <mat-card-title>{{ 'profile.hourlyRate.title' | translate }}</mat-card-title>
+      <button mat-stroked-button class="ml-auto mb-2 md:mb-0" (click)="openEditDialog('hourlyRate')">
+        <mat-icon>edit</mat-icon>{{ 'profile.hourlyRate.change' | translate }}
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ 'profile.hourlyRate.description' | translate }}</p>
+      <p><strong>{{ 'profile.hourlyRate.rate' | translate }}:</strong> {{ user.hourlyRate | globalCurrency }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Portfolio Section -->
+  <mat-card class="mb-4">
+    <mat-card-header class="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
+      <mat-card-title>{{ 'profile.portfolio.title' | translate }}</mat-card-title>
+      <div class="flex items-center gap-4">
+        <button mat-stroked-button class="ml-auto" (click)="openEditDialog('portfolio')">
+          <mat-icon>edit</mat-icon>{{ 'profile.portfolio.upload' | translate }}
+        </button>
+        <button mat-raised-button color="warn" (click)="deletePortfolioDialog()">
+          {{ 'profile.portfolio.deleteAll' | translate }}
+        </button>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="grid-container">
+        <div *ngFor="let picture of pictures" class="portfolio-item relative">
+          <img src="{{ picture.imageUrl }}" alt="Portfolio" class="w-full h-auto rounded-lg shadow-md">
+          <!-- Icon Button for Deleting a Picture -->
+          <button mat-icon-button class="delete-icon z-10" (click)="deletePictureDialog(picture)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

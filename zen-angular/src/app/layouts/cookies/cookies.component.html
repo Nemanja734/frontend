@@ -1,0 +1,16 @@
+<div id="consent-banner" class="fixed z-10 bottom-0 sm:bottom-10 sm:right-10 p-4 bg-gray-600 sm:max-w-lg text-center sm:rounded-lg">
+    <p class="mb-2">Wir verwenden Cookies, um Ihnen persönlich zugeschnittene Inhalte anbieten zu können. Die
+        Informationen identifizieren Sie nicht
+        direkt, können Ihnen jedoch ein personalisierteres Web-Erlebnis bieten. Da wir Ihr Recht auf Privatsphäre
+        respektieren, können Sie die Cookies auch ablehnen.</p>
+    <div class="flex justify-between items-center">
+        <div class="flex gap-2 lg:gap-4">
+            <a href="/legal/imprint" class="hover:underline">Imprint</a>
+            <a href="/legal/privacy" class="hover:underline">Privacy</a>
+        </div>
+        <div class="flex gap-2 lg:gap-4">
+            <button class="button-10" (click)="reject()">Reject</button>
+            <button class="button-10" (click)="accept()">I agree</button>
+        </div>
+    </div>
+</div>

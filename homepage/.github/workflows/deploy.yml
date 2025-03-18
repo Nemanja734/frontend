@@ -1,0 +1,23 @@
+name: Deploy to VPS
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+        -   name: Checkout code
+            uses: actions/checkout@v4
+
+        -   name: Deploy using SCP
+            env:
+                SSH: ${{ secrets.VPS_SSH }}
+            run: |
+                mkdir -p ~/.ssh
+                echo "$SSH" > ~/.ssh/vps-github
+                chmod 600 ~/.ssh/vps-github
+                scp -o StrictHostKeyChecking=no -i ~/.ssh/vps-github -P 6020 -r ./* ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/nemanja-tomic.de

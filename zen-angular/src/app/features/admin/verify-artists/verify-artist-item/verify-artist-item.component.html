@@ -1,0 +1,32 @@
+@if (artist) {
+<div class="artist-card mx-auto rounded-lg">
+    <!-- Picture Slider -->
+    <div *ngIf="pictures && pictures.length > 0" class="slider-container">
+        <button class="nav-button left" (click)="prevPicture()">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+        <img class="artist-picture" [src]="pictures[currentPictureIndex].imageUrl" alt="Artwork Image">
+        <button class="nav-button right" (click)="nextPicture()">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+    </div>
+
+    <!-- Artist Information -->
+    <div class="mb-auto cursor-pointer border-x border-b border-secondary-2 rounded-b-lg">
+        <div class="p-2">
+            <h2>{{artist.firstName}} {{artist.lastName}}</h2>
+            <h2>{{artist.email}}</h2>
+            <h2>{{artist.address?.line1}}</h2>
+            <h2>{{artist.address?.line2}}</h2>
+            <h2>{{artist.address?.city}}</h2>
+            <h2>{{artist.address?.postalCode}}</h2>
+            <h2>{{artist.address?.country}}</h2>
+            <h2>{{artist.instagram}}</h2>
+        </div>
+        <div class="w-full flex rounded-lg">
+            <button class="w-1/2 bg-secondary-2 rounded-bl-lg py-2">No</button>
+            <button class="w-1/2 bg-green-600 rounded-br-lg py-2" (click)="verifyArtist()">Yes</button>
+        </div>
+    </div>
+</div>
+}

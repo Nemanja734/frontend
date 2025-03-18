@@ -1,0 +1,31 @@
+@if (artist) {
+<section>
+    <h1 class="header-1 mb-4 text-center">{{'artist-detail-page.h1' | translate}}</h1>
+    <div class="flex gap-6 w-full">
+        <div class="max-w-lg mx-auto">
+            <app-artist-summary [artist]="artist"></app-artist-summary>
+        </div>
+    </div>
+</section>
+<mat-divider></mat-divider>
+<section>
+    <div class="my-8">
+        <div *ngIf="portfolio.length > 0" class="max-w-screen-2xl mx-auto">
+            <h1 class="header-1 mb-4 text-center">
+                {{'artist-detail-page.portfolio-h1' | translate}}
+            </h1>
+            <div class="grid-container">
+                <div *ngFor="let item of portfolio">
+                    <mat-card>
+                        <img src="{{item.imageUrl}}" alt="tattoo picture">
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="portfolio.length === 0">
+            <p>{{'artist-detail-page.portfolio-empty' | translate}}</p>
+        </div>
+    </div>
+</section>
+}

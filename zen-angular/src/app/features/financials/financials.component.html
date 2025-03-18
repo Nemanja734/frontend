@@ -1,0 +1,42 @@
+@if (this.onboardingLink) {
+<div class="bg-image-1 h-screen w-full bg-cover bg-no-repeat py-36 px-2">
+    <!-- The background image container remains unaffected -->
+    <mat-card class="max-w-lg mx-auto p-8 my-auto">
+        <div class="flex flex-col gap-2">
+            <h1 class="header-1 text-center">Financials</h1>
+            <p>
+                Zen partners with Stripe for secure payments and financial services. Stripe is an
+                internationally recognized service for payment processing. It fulfills all EU security
+                regulations. To be able to send you your payment, register to Stripe with your bank account
+                details and potentially confirm your identity. From there on, you can manage your funds in
+                your Stripe Dashboard, which you can access through the Financials tab on Zen.
+            </p>
+            <div class="mx-auto">
+                <a [href]="onboardingLink">
+                    <button mat-flat-button>Go to Stripe</button>
+                </a>
+            </div>
+        </div>
+    </mat-card>
+</div>
+}
+@if (this.loginLink) {
+<div class="bg-image-1 h-screen w-full bg-cover bg-no-repeat py-36 px-2">
+    <!-- The background image container remains unaffected -->
+    <mat-card class="max-w-lg mx-auto p-8 my-auto">
+        <div class="flex flex-col gap-2">
+            <h1 class="header-1 text-center">Financials</h1>
+            <p>
+                Zen partners with Stripe for secure payments and financial services. Stripe is an
+                internationally recognized service for payment processing. It fulfills all EU security
+                regulations. You can access your Stripe Express Dashboard via the button.
+            </p>
+            <div class="mx-auto">
+                <a [href]="loginLink" target="_blank">
+                    <button mat-flat-button>Go to Stripe</button>
+                </a>
+            </div>
+        </div>
+    </mat-card>
+</div>
+}

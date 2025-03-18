@@ -1,0 +1,91 @@
+@if (!loading) {
+<div class="max-w-screen-lg mx-auto">
+  <h1 class="header-1 mb-4">{{ 'calendar.title' | translate }}</h1>
+  <!-- Working Hours Section -->
+  <mat-card class="mb-4">
+    <mat-card-header class="mb-4">
+      <mat-card-title>{{ 'calendar.working-hours.title' | translate }}</mat-card-title>
+      <button *ngIf="workingHours !== null" mat-icon-button class="ml-auto" (click)="openEditDialog('workingHours')">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="workingHours !== null" class="flex flex-col md:grid grid-cols-2 gap-4">
+        <div *ngFor="let day of workingHoursArray">
+          <p><strong>{{ day.day }}:</strong> {{ day.start }} - {{ day.end }}</p>
+        </div>
+      </div>
+      <div *ngIf="workingHours === undefined" class="text-center p-4 bg-yellow-100 text-yellow-700 rounded-lg">
+        <p>{{ 'calendar.working-hours.not-set' | translate }}</p>
+        <button mat-button color="primary" class="mt-2" (click)="openEditDialog('workingHours')">
+          {{ 'calendar.working-hours.set-button' | translate }}
+        </button>
+      </div>
+    </mat-card-content>
+
+    <div *ngIf="workingHours === null" class="text-center p-4 bg-yellow-100 text-yellow-700 rounded-lg">
+      <p>{{ 'calendar.working-hours.not-set' | translate }}</p>
+      <button mat-button color="primary" class="mt-2" (click)="openEditDialog('workingHours')">
+        {{ 'calendar.working-hours.set-button' | translate }}
+      </button>
+    </div>
+  </mat-card>
+
+  <!-- Holidays Section -->
+  <mat-card class="mb-4">
+    <mat-card-header>
+      <mat-card-title>{{ 'calendar.holidays.title' | translate }}</mat-card-title>
+      <span class="ml-auto">{{ 'calendar.holidays.create-new' | translate }}</span>
+      <button mat-icon-button class="ml-2" (click)="openEditDialog('add-holiday')">
+        <mat-icon>free_cancellation</mat-icon>
+      </button>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div>
+        <ul>
+          <li *ngFor="let holiday of holidays" class="py-2">
+            <strong>{{ holiday.startDate | date:'yyyy-MM-dd' }}</strong> -
+            <strong>{{ holiday.endDate | date:'yyyy-MM-dd' }}</strong>
+            <div class="float-right">
+              <!-- Delete button for each holiday -->
+              <button mat-icon-button color="warn" (click)="deleteHoliday(holiday.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Material Calendar -->
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ 'calendar.calendar-section.title' | translate }}</mat-card-title>
+    </mat-card-header>
+    <div class="max-w-screen-sm mx-auto">
+      <div>
+        <app-calendar [workingHoursArray]="workingHoursArray" [holidays]="holidays"
+          [appointments]="appointmentDates"></app-calendar>
+      </div>
+      <!-- Calendar Legend -->
+      <div class="flex justify-center items-center gap-8 my-4 calendar-legend"
+        [attr.aria-label]="'calendar.calendar-section.legend' | translate">
+        <div class="flex items-center gap-2">
+          <span class="w-4 h-4 rounded-md bg-green-700"></span>
+          <span>{{ 'calendar.calendar-section.legend.working-day' | translate }}</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-4 h-4 rounded-md bg-yellow-600"></span>
+          <span>{{ 'calendar.calendar-section.legend.holiday' | translate }}</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-4 h-4 rounded-md bg-red-700"></span>
+          <span>{{ 'calendar.calendar-section.legend.appointment' | translate }}</span>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Matomo -->
+  <script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    // _paq.push(['trackPageView']);
+    // _paq.push(['enableLinkTracking']);
+    (function () {
+      var u = "//analytics.zen-tattoo.de/";
+      _paq.push(['setTrackerUrl', u + 'matomo.php']);
+      _paq.push(['setSiteId', '1']);
+      var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+      g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+    })();
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="google" content="notranslate">
+  <title>Zen Tattoo</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="tattoo marketplace artist">
+  <link rel="icon" type="image/x-icon" href="/images/logo-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+  <div id="initial-splash">
+    <div class="flex items-center justify-center h-screen">
+      <div class="flex-col items-center align-middle transition-all">
+        <img src="/images/logo.png" alt="logo" class="max-h-32 lg:max-h-44">
+        <div class="w-full mx-auto text-center">
+          <div class="loading-dots mt-4 text-lg font-medium">Loading&nbsp;<span class="dots"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-root></app-root>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<div class="p-4 bg-gray-800 border-t-2">
+    <div class="max-w-screen-xl mx-auto">
+        <div class="mb-2 flex items-center justify-between">
+            <div class="flex gap-2">
+                <a routerLink="/legal/terms" class="hover:underline">{{ 'footer.links.terms' | translate }}</a>
+                <mat-divider vertical></mat-divider>
+                <a routerLink="/legal/privacy" class="hover:underline">{{ 'footer.links.privacy' | translate }}</a>
+                <mat-divider vertical></mat-divider>
+                <a routerLink="/legal/imprint" class="hover:underline">{{ 'footer.links.imprint' | translate }}</a>
+                <mat-divider vertical></mat-divider>
+                <a routerLink="/legal/contact" class="hover:underline">{{ 'footer.links.contact' | translate }}</a>
+            </div>
+            <div class="h-6 w-6 lg:h-10 lg:w-10 ml-auto">
+                <a href="https://www.instagram.com/zentattoo.official/">
+                    <img src="/images/ig.png" alt="{{ 'footer.social.instagram-alt' | translate }}" class="ig">
+                </a>
+            </div>
+        </div>
+        <div>
+            <h1 class="font-thin">Copyright ©{{currentYear}} Zen Tattoo</h1>
+        </div>
+    </div>
+</div>

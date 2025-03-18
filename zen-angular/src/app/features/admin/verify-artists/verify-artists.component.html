@@ -1,0 +1,11 @@
+<div *ngIf="artists && artists.count > 0">
+    <div class="grid-container">
+        @for (artist of artists.data; track artist.id) {
+        <app-verify-artist-item [artist]="artist"></app-verify-artist-item>
+        }
+    </div>
+
+    <!-- Paginator -->
+    <app-paginator [totalItems]="artists.count" [pageSize]="artists.pageSize"
+        (pageChanged)="handlePageEvent($event)"></app-paginator>
+</div>

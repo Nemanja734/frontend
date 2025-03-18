@@ -1,0 +1,31 @@
+.custom-container-1 {
+    @apply max-w-screen-2xl mx-auto px-4 md:px-12 my-28;
+}
+
+.custom-container-2 {
+    @apply max-w-screen-2xl mx-auto px-4 md:px-12 mb-28 mt-12;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    width: 100%;
+}
+
+.styles-container {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.style-tag {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+    border-radius: 12px;
+    padding: 4px 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-block;
+}

@@ -1,0 +1,158 @@
+<div class="max-w-full overflow-hidden">
+    <!-- Find your Ink, Define your Soul -->
+    <div class="bg-image-1 relative h-screen w-full bg-cover bg-no-repeat max-w-full">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="relative h-full flex items-center justify-start pl-4 md:pl-8">
+            <div class="px-4 md:px-8 flex flex-col gap-2 slideInLeft">
+                <h1 class="text-4xl md:text-6xl font-bold text-nowrap">Find your Ink,</h1>
+                <h1 class="text-4xl md:text-6xl font-bold text-nowrap">Define your Soul</h1>
+                <div class="flex flex-col lg:flex-row mt-8 gap-4 lg:gap-8">
+                    <button routerLink="/showroom" class="mt-2 button-1">{{ 'home.exploreArtists' | translate
+                        }}</button>
+                    <button routerLink="/account/register" class="mt-2 button-1"
+                        *ngIf="accountService.currentUser() === null">Become an Artist</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Who we are -->
+    <div class="border-t">
+        <div class="flex flex-col mx-auto md:py-12 py-6 justify-around items-center h-full w-full gap-4 hiddenContent">
+            <!-- Left Section -->
+            <div class="w-full text-center px-6">
+                <h1 class="text-center text-2xl md:text-4xl font-bold">
+                    Zen Tattoo – where artistry meets passion
+                </h1>
+            </div>
+            <!-- Right Section -->
+            <div class="w-full max-w-screen-sm">
+                <p class="text-center w-full px-4 md:mx-0">
+                    Zen Tattoo is an online marketplace for tattoo enthusiasts and professional artists. Our mission is
+                    to
+                    connect clients with skilled tattoo artists all around Germany, offering a seamless platform to
+                    explore,
+                    book, and collaborate on exceptional tattoo designs. Whether you're searching for your first tattoo
+                    or
+                    adding to your collection, we provide a curated space that fosters creativity and convenience.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- How it works -->
+    <div class="border-t">
+        <div class="flex flex-wrap flex-col-reverse md:flex-row h-full hiddenContent">
+            <!-- Left Image (will appear below on small screens) -->
+            <img src="/images/artist2.jpg" alt="Tattoo artist"
+                class="w-full md:w-1/3 max-w-full h-auto object-cover border-t md:border-t-0 md:border-r">
+
+            <!-- Right Div with Gradient Background -->
+            <div class="w-full md:w-2/3 pt-6 md:pt-12 mx-auto flex flex-col items-center justify-center bg-2">
+                <h1 class="text-center text-2xl md:text-4xl font-bold">{{ 'home.howItWorksTitle' | translate }}</h1>
+                <div class="m-4 max-w-full">
+                    <img *ngIf="locale === 'en'" src="/images/HowItWorks_en.png" alt="How it works">
+                    <img *ngIf="locale === 'de'" src="/images/HowItWorks_de.png" alt="How it works">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- And the best thing -->
+    <div class="border-t">
+        <div
+            class="flex flex-col md:flex-row md:py-12 py-6 justify-around items-center h-full w-full hiddenContent">
+            <!-- Left Section -->
+            <div class="w-full md:w-1/2 mb-4 md:mb-0 text-center px-4">
+                <h1 class="text-2xl text-center md:text-4xl font-bold md:text-right">
+                    {{ 'home.bestThingSubtitle' | translate }}
+                </h1>
+            </div>
+            <!-- Right Section -->
+            <div class="w-full md:w-1/2">
+                <p class="text-center mx-auto w-full md:border-l px-4 md:mx-0 md:text-left md:w-3/4 xl:w-1/2">
+                    {{ 'home.bestThingText' | translate }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Key Features -->
+    <div class="border-t border-b">
+        <div class="w-full flex items-stretch align-top hiddenContent">
+            <!-- Left Div with Gradient Background -->
+            <div class="w-full p-6 md:p-12 flex flex-col gap-8 items-center justify-center bg-2">
+                <h1 class="text-center text-2xl md:text-4xl font-bold">{{ 'home.offerTitle' | translate }}</h1>
+                <div class="features__container">
+                    <div class="features__column">
+                        <div class="features__item">
+                            <img src="/icons/select.png" alt="Browse Artists">
+                            <div class="features__item-text">
+                                <h1>Explore Tattoo Artists</h1>
+                                <p>Browse professional artists in the Showroom, explore their portfolios and choose your
+                                    favorite one.</p>
+                            </div>
+                        </div>
+                        <div class="features__item">
+                            <img src="/icons/find.png" alt="Browse Artists">
+                            <div class="features__item-text">
+                                <h1>Select the Size and Style</h1>
+                                <p>Decide what size and style your new tattoo should have in the checkout. This will be
+                                    the baseline for the time calculation.</p>
+                            </div>
+                        </div>
+                        <div class="features__item">
+                            <img src="/icons/calculator.png" alt="Browse Artists">
+                            <div class="features__item-text">
+                                <h1>Get the price estimation</h1>
+                                <p>The algorithm will calculate an estimate for the price based on your input and the
+                                    hourly rate of the artist.</p>
+                            </div>
+                        </div>
+                        <div class="features__item">
+                            <img src="/icons/book.png" alt="Browse Artists">
+                            <div class="features__item-text">
+                                <h1>Schedule a date</h1>
+                                <p>Check out the schedule of the artist on the calendar and pick a date of your liking.
+                                    This
+                                    is the last step of the checkout.</p>
+                            </div>
+                        </div>
+                        <div class="features__item">
+                            <img src="/icons/tattoo-machine.png" alt="Browse Artists">
+                            <div class="features__item-text">
+                                <h1>Go to your appointment</h1>
+                                <p>Visit the artist's location on the day of the appointment and get your new tattoo.
+                                    The
+                                    artist will log the actual time of the appointment.</p>
+                            </div>
+                        </div>
+                        <div class="features__item">
+                            <img src="/icons/refund.png" alt="Browse Artists">
+                            <div class="features__item-text">
+                                <h1>Receive a refund</h1>
+                                <p>After the artist logged the actual time of the tattoo, you will receive a refund for
+                                    every full hour difference compared to the estimate!</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="bg-gray-900 flex flex-col text-center gap-4 rounded-lg p-4">
+                    <h1 class="text-xl lg:text-3xl font-bold">{{ 'home.refundPolicyTitle' | translate }}</h1>
+                    <p>{{ 'home.refundPolicyText' | translate }}</p>
+                </div>
+                <div class="flex flex-col lg:flex-row justify-around gap-4 lg:gap-8">
+                    <button routerLink="/showroom" class="button-1">{{ 'home.cta2' | translate }}</button>
+                    <button routerLink="/frequently-asked-questions" class="button-1">{{ 'home.faq' | translate
+                        }}</button>
+                </div>
+            </div>
+            <!-- Right Image (will not appear on small screens) -->
+            <!-- <div class="w-full lg:w-1/2">
+                <img src="/images/artist3.jpg" alt="Tattoo artist"
+                    class="w-full h-auto object-cover border-t lg:border-t-0 lg:border-l">
+            </div> -->
+        </div>
+    </div>
+</div>

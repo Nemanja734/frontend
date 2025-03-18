@@ -1,0 +1,32 @@
+// Stylesheet for Angular Material Components
+:root {
+
+    .mdc-button,
+    .mdc-raised-button,
+    .mdc-stroked-button,
+    .mdc-flat-button {
+        @apply rounded-md
+    }
+}
+
+.mdc-notched-outline__notch {
+    border-right-style: none !important;
+}
+
+.mat-mdc-snack-bar-container.snack-error {
+    --mdc-snackbar-container-color: #6e0909;
+    --mat-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+}
+
+.mat-mdc-snack-bar-container.snack-success {
+    --mdc-snackbar-container-color: #001c8c;
+    --mat-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+}
+
+.mat-mdc-snack-bar-container.snack-info {
+    --mdc-snackbar-container-color: #212121;
+    --mat-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+}

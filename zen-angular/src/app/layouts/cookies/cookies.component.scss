@@ -1,0 +1,12 @@
+// Buttons
+.button-10 {
+    background-color: #001670;
+    transition: background-color 0.3 ease;
+    padding: 4px;
+    width: 100px;
+    @apply rounded-lg
+}
+
+.button-10:hover {
+    background-color: #02209b;
+}

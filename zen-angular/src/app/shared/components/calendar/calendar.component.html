@@ -1,0 +1,57 @@
+<div class="p-4 rounded-lg shadow-2xl w-full">
+    <div>
+        <div class="flex items-center justify-center mb-4">
+            <button mat-flat-button (click)="toToday()">{{'calendar.today' | translate}}</button>
+        </div>
+        <div class="flex justify-between items-center mb-4">
+            <button class="bg-blue-700 px-4 py-2 rounded hover:bg-blue-600" (click)="previousMonth()">
+                &lt;
+            </button>
+            <!-- <h2 class="text-xl">{{ currentMonth | date: 'MMMM yyyy' }}</h2> -->
+            <h2 class="text-xl">{{ currentMonthLocalized }}</h2>
+            <button class="bg-blue-700 px-4 py-2 rounded hover:bg-blue-600" (click)="nextMonth()">
+                &gt;
+            </button>
+        </div>
+        <div class="grid grid-cols-7 gap-2 text-center">
+            <div class="font-bold">{{'calendar.daysOfWeek.mon' | translate}}</div>
+            <div class="font-bold">{{'calendar.daysOfWeek.tue' | translate}}</div>
+            <div class="font-bold">{{'calendar.daysOfWeek.wed' | translate}}</div>
+            <div class="font-bold">{{'calendar.daysOfWeek.thu' | translate}}</div>
+            <div class="font-bold">{{'calendar.daysOfWeek.fri' | translate}}</div>
+            <div class="font-bold">{{'calendar.daysOfWeek.sat' | translate}}</div>
+            <div class="font-bold">{{'calendar.daysOfWeek.sun' | translate}}</div>
+            <ng-container *ngFor="let day of calendarDays">
+                <div class="hover:opacity-70 cursor-default">
+                    @if (isToday(day)) {
+                    <div class="p-4 border rounded-lg bg-black">
+                        {{ day?.getDate() || ''}}
+                    </div>
+                    } @else if (isPast(day)) {
+                    <div class="p-4 border rounded-lg">
+                        {{ day?.getDate() || ''}}
+                    </div>
+                    <!-- Artist Calendar Section -->
+                    } @else if (isAppointment(day)) {
+                    <div class="p-4 border rounded-lg bg-red-700">
+                        {{ day?.getDate() || ''}}
+                    </div>
+                    } @else if (isHoliday(day)) {
+                    <div class="p-4 border rounded-lg bg-yellow-600">
+                        {{ day?.getDate() || ''}}
+                    </div>
+                    } @else if (isWorkingDay(day)) {
+                    <div class="p-4 border rounded-lg bg-green-700">
+                        {{ day?.getDate() || ''}}
+                    </div>
+                    <!-- For Saturday and Sunday -->
+                    } @else {
+                    <div class="p-4 border rounded-lg h-full">
+                        {{ day?.getDate() || ''}}
+                    </div>
+                    }
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

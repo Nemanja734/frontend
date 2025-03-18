@@ -1,0 +1,102 @@
+<div class="bg-primary-1">
+    <mat-dialog-content [formGroup]="form">
+        <!-- Edit working hours -->
+        <div *ngIf="data.type === 'workingHours'">
+            <h2 class="text-xl lg:text-2xl" *ngIf="currentStep === 1">
+                {{ 'availability-dialog.working-hours.step1-title' | translate }}
+            </h2>
+            <h2 class="text-xl lg:text-2xl" *ngIf="currentStep === 2">
+                {{ 'availability-dialog.working-hours.step2-title' | translate }}
+            </h2>
+            <!-- Step 1 -->
+            <div *ngIf="currentStep === 1">
+                <mat-selection-list formControlName="selectedDays" multiple>
+                    <mat-list-option *ngFor="let day of translatedDays" [value]="day">
+                        {{ day | titlecase }}
+                    </mat-list-option>
+                </mat-selection-list>
+            </div>
+            <!-- Step 2 -->
+            <div *ngIf="currentStep === 2">
+                <div *ngFor="let day of selectedDays" class="mb-2">
+                    <mat-form-field class="w-full" appearance="fill">
+                        <mat-label>
+                            {{ day | translate}} {{ 'availability-dialog.working-hours.start-time-label' | translate }}
+                        </mat-label>
+                        <mat-select formControlName="{{ day + 'Begin' }}">
+                            <mat-option *ngFor="let hour of hours" [value]="hour">
+                                {{ hour }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="w-full" appearance="fill">
+                        <mat-label>
+                            {{ day | translate}} {{ 'availability-dialog.working-hours.end-time-label' | translate }}
+                        </mat-label>
+                        <mat-select formControlName="{{ day + 'End' }}">
+                            <mat-option *ngFor="let hour of hours" [value]="hour">
+                                {{ hour }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <!-- Add holiday -->
+        <div *ngIf="data.type === 'add-holiday'">
+            <h2 class="text-xl lg:text-2xl">
+                {{ 'availability-dialog.add-holiday.title' | translate }}
+            </h2>
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>
+                    {{ 'availability-dialog.add-holiday.date-range-label' | translate }}
+                </mat-label>
+                <mat-date-range-input [rangePicker]="picker" [min]="mindate">
+                    <input matStartDate formControlName="startDate" placeholder="{{ 'availability-dialog.add-holiday.start-date-placeholder' | translate }}">
+                    <input matEndDate formControlName="endDate" placeholder="{{ 'availability-dialog.add-holiday.end-date-placeholder' | translate }}">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+
+                <!-- Error handling for startDate -->
+                <mat-error *ngIf="form.get('startDate')?.hasError('required')">
+                    {{ 'availability-dialog.add-holiday.start-date-required-error' | translate }}
+                </mat-error>
+
+                <!-- Error handling for endDate -->
+                <mat-error *ngIf="form.get('endDate')?.hasError('required')">
+                    {{ 'availability-dialog.add-holiday.end-date-required-error' | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+
+    <div *ngIf="data.type === 'workingHours'">
+        <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close *ngIf="currentStep === 1">
+                {{ 'availability-dialog.working-hours.cancel-button' | translate }}
+            </button>
+            <button mat-button color="primary" *ngIf="currentStep === 1" (click)="nextStepWorkingHours()" [disabled]="form.invalid">
+                {{ 'availability-dialog.working-hours.next-button' | translate }}
+            </button>
+            <button mat-button mat-dialog-close *ngIf="currentStep === 2">
+                {{ 'availability-dialog.working-hours.cancel-button' | translate }}
+            </button>
+            <button mat-button color="primary" *ngIf="currentStep === 2" (click)="submit()">
+                {{ 'availability-dialog.working-hours.send-button' | translate }}
+            </button>
+        </mat-dialog-actions>
+    </div>
+
+    <div *ngIf="data.type !== 'workingHours'">
+        <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close>
+                {{ 'availability-dialog.add-holiday.cancel-button' | translate }}
+            </button>
+            <button mat-button color="primary" (click)="submit()">
+                {{ 'availability-dialog.add-holiday.send-button' | translate }}
+            </button>
+        </mat-dialog-actions>
+    </div>
+</div>

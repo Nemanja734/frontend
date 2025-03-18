@@ -1,0 +1,68 @@
+name: Deploy to VPS
+
+on:
+    push:
+        branches:
+            - master  # Trigger on pushes to the master branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+        PROJECT_PATH: ./API
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli@18
+
+    - name: Install deps and build angular app
+      run: |
+        cd client
+        npm install
+        ng build
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.110'  # Match your project’s .NET version
+
+    - name: Build .NET API
+      run: dotnet build ${{env.PROJECT_PATH}} --configuration Release
+
+    - name: Publish .NET API
+      run: dotnet publish ${{env.PROJECT_PATH}} -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+
+    - name: Copy files to VPS
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.GithubActions }}  # Add your private SSH key in GitHub secrets
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/vps-github
+        chmod 600 ~/.ssh/vps-github
+        scp -o StrictHostKeyChecking=no -i ~/.ssh/vps-github -P 6020 -r "${{env.DOTNET_ROOT}}/myapp" github@57.129.71.51:/var/www
+  
+  reboot-vps:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Reboot VPS
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.GithubActions }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/vps-github
+        chmod 600 ~/.ssh/vps-github
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/vps-github -p 6020 github@57.129.71.51 'sudo reboot'
+
+    - name: Wait for VPS to reboot
+      run: sleep 10
